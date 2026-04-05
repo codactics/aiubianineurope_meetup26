@@ -1,0 +1,1392 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+  <head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AIUBian In Europe - MeetUp 26</title>
+
+  <!-- Tailwind -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = { darkMode: "class" };
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Rubik+Mono+One&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <link rel="icon" href="../logo/codactics.ico" type="image/x-icon" />
+  <style>
+    .aiub-line {
+      background: linear-gradient(90deg, #facc15, #2563eb, #facc15);
+      background-size: 200% 100%;
+      animation: aiub-scroll 3s linear infinite;
+    }
+
+    @keyframes aiub-scroll {
+      from {
+        background-position: 0 0;
+      }
+      to {
+        background-position: -200% 0;
+      }
+    }
+
+    .lot-font {
+      font-family: "Rubik Mono One", "LOT", "Lot", "LOT-Regular", "LOT Light", sans-serif;
+      letter-spacing: 0.35em;
+    }
+  </style>
+</head>
+<body class="bg-slate-950 min-h-screen text-white">
+
+  <div id="agreementOverlay" class="fixed inset-0 z-50 flex items-center justify-center bg-slate-950/95 px-4">
+    <div class="w-full max-w-3xl rounded-3xl border border-slate-800 bg-slate-900/90 p-8 text-center shadow-2xl">
+      <p class="text-sm font-semibold uppercase tracking-[0.4em] text-indigo-300 mb-3">Agreement</p>
+      <h2 class="text-2xl font-semibold text-white mb-2">Before you continue</h2>
+      <p class="text-sm text-slate-300 mb-5">
+        Please agree to the event guidelines so we can keep the meetup safe, inclusive, and well-organized.
+      </p>
+      <ul class="mb-6 space-y-2 text-left text-xs text-slate-300">
+        <li class="flex items-start gap-2">
+          <span class="mt-1 h-2 w-2 rounded-full bg-indigo-400"></span>
+          No registration is guaranteed after the deadline; submitting the form or payment alone does not secure a spot.
+        </li>
+        <li class="flex items-start gap-2">
+          <span class="mt-1 h-2 w-2 rounded-full bg-yellow-400"></span>
+          After filling out registration please wait up to 5 working days for the confirmation email.
+        </li>
+        <li class="flex items-start gap-2">
+          <span class="mt-1 h-2 w-2 rounded-full bg-red-400"></span>
+          Please email us with any registration changes at least five working days before the event.
+        </li>
+        <li class="flex items-start gap-2">
+          <span class="mt-1 h-2 w-2 rounded-full bg-sky-400"></span>
+          No refunds, but we are happy to help with any issues.
+        </li>
+      </ul>
+      <button id="agreeButton"
+        class="inline-flex items-center justify-center rounded-full bg-indigo-500 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-indigo-500/40 transition hover:bg-indigo-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500">
+        I Agree & Continue
+      </button>
+    </div>
+  </div>
+
+  <div id="appContent" class="hidden">
+  <!-- HEADER -->
+  <header class="bg-slate-900/70 border-b border-slate-800">
+    <div class="max-w-4xl mx-auto px-4 py-4 flex items-center justify-between gap-4">
+      <div class="w-[9.5rem] h-[9.5rem] rounded-full flex items-center justify-center">
+        <img src="../logo/aiubineurope.png" alt="AIUBian in Europe logo" class="h-[8rem] w-auto object-contain">
+      </div>
+
+      <div class="flex-1 text-center leading-tight">
+        <div class="inline-block">
+          <h1 class="w-full mt-2 text-4xl sm:text-5xl md:text-6xl font-semibold tracking-tight">AIUBian IN Europe</h1>
+          <div class="aiub-line h-1.5 w-full rounded-full mt-4 mb-2"></div>
+        </div>
+      </div>
+
+      <div class="w-[9.5rem] h-[9.5rem] rounded-full flex items-center justify-center">
+        <img src="../logo/aiubineurope.png" alt="AIUBian in Europe logo" class="h-[8rem] w-auto object-contain">
+      </div>
+    </div>
+  </header>
+
+  <!-- MAIN -->
+  <main class="max-w-4xl mx-auto px-4 py-10">
+    <div class="mb-8 text-center bg-slate-900/55 border border-sky-400/20 rounded-2xl px-5 py-5 shadow-lg shadow-sky-950/20">
+      <h2 class="text-white text-2xl sm:text-3xl font-semibold">MeetUp 26 Registration Form</h2>
+      <p class="mt-3 text-base sm:text-lg font-medium text-slate-100">Date: 29th August 2026 (Saturday)</p>
+      <p class="mt-2 text-base sm:text-lg text-slate-100 leading-relaxed">
+        <span class="font-medium text-white">Location:</span>
+        <a
+          href="https://www.google.com/maps/place/SAALBAU+Gallus/@50.1042945,8.6390892,725m/data=!3m2!1e3!4b1!4m6!3m5!1s0x47bd0be0d7e93b03:0x4448f9eb014892cb!8m2!3d50.1042945!4d8.6416641!16s%2Fg%2F1trxctk8?entry=ttu&amp;g_ep=EgoyMDI2MDQwMS4wIKXMDSoASAFQAw%3D%3D"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="font-medium text-sky-300 underline decoration-sky-400/70 underline-offset-2 hover:text-sky-200"
+        >SAALBAU Gallus, Frankenallee 111, 60326 Frankfurt am Main</a>
+      </p>
+      <div class="mt-4">
+        <a
+          href="./AIUBian-In-Europe-MeetUp-26.ics"
+          download="AIUBian-In-Europe-MeetUp-26.ics"
+          class="inline-flex items-center justify-center rounded-full border border-sky-400/30 bg-sky-400/10 px-5 py-2.5 text-sm font-semibold text-sky-200 shadow-md shadow-sky-950/20 transition hover:border-sky-300/50 hover:bg-sky-400/15 hover:text-white"
+        >Add to Calendar (.ics)</a>
+      </div>
+    </div>
+
+    <form id="eventForm" class="space-y-6">
+      <div class="bg-slate-900/40 border border-slate-800 rounded-2xl p-6 sm:p-8 shadow-lg">
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+          <!-- Last Name -->
+          <div>
+            <label class="block text-sm font-medium mb-1">Last Name</label>
+            <input type="text" name="last-name"
+              class="w-full rounded-md bg-white/5 px-3 py-2 text-sm text-white border border-white/10 focus:border-indigo-500 outline-none"
+              required>
+          </div>
+
+          <!-- First Name -->
+          <div>
+            <label class="block text-sm font-medium mb-1">First Name</label>
+            <input type="text" name="first-name"
+              class="w-full rounded-md bg-white/5 px-3 py-2 text-sm text-white border border-white/10 focus:border-indigo-500 outline-none"
+              required>
+          </div>
+
+          <!-- Middle Name -->
+          <div>
+            <label class="block text-sm font-medium mb-1">Middle Name (if you have)</label>
+            <input type="text" name="middle-name"
+              class="w-full rounded-md bg-white/5 px-3 py-2 text-sm text-white border border-white/10 focus:border-indigo-500 outline-none"
+              placeholder="Optional">
+          </div>
+
+          <!-- Email -->
+          <div>
+            <label class="block text-sm font-medium mb-1">Email</label>
+            <input type="email" name="email"
+              class="w-full rounded-md bg-white/5 px-3 py-2 text-sm text-white border border-white/10 focus:border-indigo-500 outline-none"
+              required>
+          </div>
+
+          <!-- PHONE -->
+          <div class="sm:col-span-2">
+            <label class="block text-sm font-medium mb-1">Phone</label>
+            <div class="flex gap-2">
+              <!-- custom country picker -->
+              <div class="relative" id="countryPicker">
+                <button type="button" id="countryButton"
+                  class="w-52 flex items-center gap-2 rounded-md bg-slate-900/70 border border-white/10 px-3 py-2 text-sm text-white hover:border-indigo-400">
+                  <img id="countryFlag" src="https://flagcdn.com/w40/de.png" alt="flag" class="w-6 h-4 object-cover rounded-sm">
+                  <span class="flex-1 text-left">
+                    <span id="countryCode">+49</span>
+                    <span id="countryName" class="block text-xs text-slate-300 leading-tight">Germany</span>
+                  </span>
+                  <svg class="w-4 h-4 text-slate-200" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd"
+                      d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 111.06 1.06l-4.24 4.24a.75.75 0 01-1.06 0L5.21 8.29a.75.75 0 01.02-1.08z"
+                      clip-rule="evenodd" />
+                  </svg>
+                </button>
+
+                <div id="countryList"
+                  class="hidden absolute z-20 mt-1 w-72 max-h-72 overflow-y-auto rounded-md bg-slate-900 border border-slate-700 shadow-lg">
+                </div>
+
+                <input type="hidden" id="phoneCodeHidden" name="phone-code" value="+49">
+              </div>
+
+              <!-- phone number -->
+              <input type="tel" name="phone-number"
+                class="flex-1 rounded-md bg-white/5 px-3 py-2 text-sm text-white border border-white/10 focus:border-indigo-500 outline-none"
+                placeholder="Phone number" inputmode="numeric" pattern="[0-9]+" required>
+            </div>
+            <p class="text-xs text-slate-400 mt-1">Pick your country, then type your number.</p>
+          </div>
+
+          <!-- AIUB DEPARTMENT (colored dropdown) -->
+          <div class="sm:col-span-2">
+            <label class="block text-sm font-medium mb-1">AIUB Department</label>
+            <div class="relative" id="deptPicker">
+              <button type="button" id="deptButton"
+                class="w-full flex items-center justify-between rounded-md bg-slate-900/70 border border-white/10 px-3 py-2 text-sm text-white">
+                <span id="deptLabel" class="px-3 py-1 rounded-md text-sm"
+                  style="background:#1d4ed8">Faculty of Science and Technology</span>
+                <svg class="w-4 h-4 text-slate-200" viewBox="0 0 20 20" fill="currentColor">
+                  <path fill-rule="evenodd"
+                    d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 111.06 1.06l-4.24 4.24a.75.75 0 01-1.06 0L5.21 8.29a.75.75 0 01.02-1.08z"
+                    clip-rule="evenodd" />
+                </svg>
+              </button>
+
+              <div id="deptList"
+                class="hidden absolute z-20 mt-1 w-full rounded-md overflow-hidden shadow-lg border border-slate-700">
+                <button type="button" data-value="FST"
+                  class="w-full text-left px-4 py-2 text-white text-sm" style="background:#1d4ed8">
+                  Faculty of Science and Technology
+                </button>
+                <button type="button" data-value="FE"
+                  class="w-full text-left px-4 py-2 text-white text-sm" style="background:#f59e0b">
+                  Faculty of Engineering
+                </button>
+                <button type="button" data-value="FBA"
+                  class="w-full text-left px-4 py-2 text-white text-sm" style="background:#16a34a">
+                  Faculty of Business Administration
+                </button>
+                <button type="button" data-value="FHSS"
+                  class="w-full text-left px-4 py-2 text-white text-sm" style="background:#dc2626">
+                  Faculty of Humanities and Social Sciences
+                </button>
+                <button type="button" data-value="FHLS"
+                  class="w-full text-left px-4 py-2 text-white text-sm" style="background:#a855f7">
+                  Faculty of Health and Life Sciences
+                </button>
+              </div>
+
+              <input type="hidden" name="aiub-department" id="deptValue" value="FST">
+            </div>
+          </div>
+
+          <!-- AIUB ID -->
+          <div>
+            <label class="block text-sm font-medium mb-1">AIUB ID (e.g. 08-1, 16-2, 20-3)</label>
+            <input type="text" name="aiub-id"
+              class="w-full rounded-md bg-white/5 px-3 py-2 text-sm text-white border border-white/10 focus:border-indigo-500 outline-none"
+              placeholder="20-3" required>
+          </div>
+
+          <!-- City -->
+          <div>
+            <label class="block text-sm font-medium mb-1">City in Europe right now</label>
+            <input type="text" name="current-city"
+              class="w-full rounded-md bg-white/5 px-3 py-2 text-sm text-white border border-white/10 focus:border-indigo-500 outline-none"
+              placeholder="Berlin, Madrid, Vienna..." required>
+          </div>
+
+          <!-- Country -->
+          <div>
+            <label class="block text-sm font-medium mb-1">Country</label>
+            <input type="text" name="current-country"
+              class="w-full rounded-md bg-white/5 px-3 py-2 text-sm text-white border border-white/10 focus:border-indigo-500 outline-none"
+              placeholder="Germany" required>
+          </div>
+
+          <!-- Photo -->
+          <div>
+            <label class="block text-sm font-medium mb-1">Photo</label>
+            <input type="file" name="photo" accept=".png,.jpg,.jpeg"
+              class="w-full text-sm text-slate-200 file:mr-3 file:py-2 file:px-4 file:rounded-md file:border-0 file:bg-indigo-500 file:text-white hover:file:bg-indigo-400">
+            <p class="text-xs text-slate-400 mt-1">PNG or JPG only.</p>
+          </div>
+
+          <!-- Professional status -->
+          <div class="sm:col-span-2">
+            <label class="block text-sm font-medium mb-1">Professional status</label>
+            <div class="relative" id="statusPicker">
+              <button type="button" id="statusButton"
+                class="w-full flex items-center justify-between rounded-md bg-slate-900/70 border border-white/10 px-3 py-2 text-sm text-white">
+                <span id="statusLabel">Student</span>
+                <svg class="w-4 h-4 text-slate-200" viewBox="0 0 20 20" fill="currentColor">
+                  <path fill-rule="evenodd"
+                    d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 111.06 1.06l-4.24 4.24a.75.75 0 01-1.06 0L5.21 8.29a.75.75 0 01.02-1.08z"
+                    clip-rule="evenodd" />
+                </svg>
+              </button>
+
+              <div id="statusList"
+                class="hidden absolute z-20 mt-1 w-full rounded-md overflow-hidden shadow-lg border border-slate-700 bg-slate-900">
+                <button type="button" data-value="student"
+                  class="w-full text-left px-4 py-2 text-sm text-white hover:bg-slate-800">
+                  Student
+                </button>
+                <button type="button" data-value="fulltime"
+                  class="w-full text-left px-4 py-2 text-sm text-white hover:bg-slate-800">
+                  Full-time job holder
+                </button>
+                <button type="button" data-value="other"
+                  class="w-full text-left px-4 py-2 text-sm text-white hover:bg-slate-800">
+                  Other
+                </button>
+              </div>
+
+              <input type="hidden" name="professional-status" id="statusValue" value="student">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-slate-900/40 border border-slate-800 rounded-2xl p-6 sm:p-8 shadow-lg space-y-6">
+        <!-- Are you coming -->
+        <div>
+          <label class="block text-sm font-medium mb-2">Are you coming?</label>
+          <div class="flex gap-6 items-center">
+            <label class="inline-flex items-center gap-2">
+              <input type="radio" name="coming" value="alone" id="comingAlone" checked
+                class="w-4 h-4 text-indigo-500 border-slate-600 bg-slate-900">
+              <span class="text-sm">Alone</span>
+            </label>
+            <label class="inline-flex items-center gap-2">
+              <input type="radio" name="coming" value="with-spouse" id="withSpouse"
+                class="w-4 h-4 text-indigo-500 border-slate-600 bg-slate-900">
+              <span class="text-sm">With spouse (non AIUBian)</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- Number of kids -->
+        <div>
+          <p class="block text-sm font-medium mb-3">Number of kids</p>
+          <div class="grid gap-4 sm:grid-cols-2">
+            <div class="rounded-2xl border border-slate-800 bg-slate-900/50 p-4" data-counter>
+              <p class="text-xs uppercase tracking-[0.3em] text-slate-400 mb-1">0 to 7</p>
+              <div class="flex items-center gap-2 rounded-md border border-white/10 bg-slate-950/50 px-1">
+                <button type="button" data-counter-adjust="-1" aria-label="Decrease kids between 0 and 7"
+                  class="h-10 w-10 rounded-lg text-2xl font-bold text-indigo-300 transition hover:text-indigo-200 focus:outline focus:outline-2 focus:outline-offset-2 focus:outline-indigo-500">
+                  −
+                </button>
+                <input type="number" name="kids-0-7" min="0" max="10" value="0" data-counter-input
+                  class="flex-1 text-center bg-transparent text-2xl font-semibold text-white outline-none"
+                  aria-label="Kids between 0 and 7" />
+                <button type="button" data-counter-adjust="1" aria-label="Increase kids between 0 and 7"
+                  class="h-10 w-10 rounded-lg text-2xl font-bold text-indigo-300 transition hover:text-indigo-200 focus:outline focus:outline-2 focus:outline-offset-2 focus:outline-indigo-500">
+                  +
+                </button>
+              </div>
+            </div>
+            <div class="rounded-2xl border border-slate-800 bg-slate-900/50 p-4" data-counter>
+              <p class="text-xs uppercase tracking-[0.3em] text-slate-400 mb-1">8 to 16</p>
+              <div class="flex items-center gap-2 rounded-md border border-white/10 bg-slate-950/50 px-1">
+                <button type="button" data-counter-adjust="-1" aria-label="Decrease kids between 8 and 16"
+                  class="h-10 w-10 rounded-lg text-2xl font-bold text-indigo-300 transition hover:text-indigo-200 focus:outline focus:outline-2 focus:outline-offset-2 focus:outline-indigo-500">
+                  −
+                </button>
+                <input type="number" name="kids-8-16" min="0" max="10" value="0" data-counter-input
+                  class="flex-1 text-center bg-transparent text-2xl font-semibold text-white outline-none"
+                  aria-label="Kids between 8 and 16" />
+                <button type="button" data-counter-adjust="1" aria-label="Increase kids between 8 and 16"
+                  class="h-10 w-10 rounded-lg text-2xl font-bold text-indigo-300 transition hover:text-indigo-200 focus:outline focus:outline-2 focus:outline-offset-2 focus:outline-indigo-500">
+                  +
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div class="rounded-2xl border border-emerald-400/20 bg-emerald-400/10 px-5 py-4">
+            <p class="text-xs uppercase tracking-[0.3em] text-emerald-200/80">Total Perticipent</p>
+            <div class="mt-3 grid gap-3 sm:grid-cols-3">
+              <div class="rounded-xl border border-white/10 bg-slate-950/40 px-4 py-3">
+                <p class="text-xs uppercase tracking-[0.24em] text-slate-400">Adults</p>
+                <p id="adultCount" class="mt-1 text-2xl font-semibold text-white">1</p>
+              </div>
+              <div class="rounded-xl border border-white/10 bg-slate-950/40 px-4 py-3">
+                <p class="text-xs uppercase tracking-[0.24em] text-slate-400">Kids</p>
+                <p id="kidsCount" class="mt-1 text-2xl font-semibold text-white">0</p>
+              </div>
+              <div class="rounded-xl border border-white/10 bg-slate-950/40 px-4 py-3">
+                <p class="text-xs uppercase tracking-[0.24em] text-slate-400">Total Participants</p>
+                <p id="totalParticipantCount" class="mt-1 text-2xl font-semibold text-emerald-300">1</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div class="rounded-2xl border border-amber-400/20 bg-amber-400/10 px-5 py-5">
+            <p class="text-xs uppercase tracking-[0.3em] text-amber-200/80">Price Details</p>
+            <div class="mt-4 grid gap-3">
+              <div class="flex items-center justify-between gap-4 rounded-xl border border-white/10 bg-slate-950/40 px-4 py-3">
+                <p class="text-sm text-slate-200">Student</p>
+                <p class="text-sm font-semibold text-amber-200">40 Euro</p>
+              </div>
+              <div class="flex items-center justify-between gap-4 rounded-xl border border-white/10 bg-slate-950/40 px-4 py-3">
+                <p class="text-sm text-slate-200">Student / Other + Spouse (Non AIUBian)</p>
+                <p class="text-sm font-semibold text-amber-200">80 Euro</p>
+              </div>
+              <div class="flex items-center justify-between gap-4 rounded-xl border border-white/10 bg-slate-950/40 px-4 py-3">
+                <p class="text-sm text-slate-200">Single Full-time Job</p>
+                <p class="text-sm font-semibold text-amber-200">60 Euro</p>
+              </div>
+              <div class="flex items-center justify-between gap-4 rounded-xl border border-white/10 bg-slate-950/40 px-4 py-3">
+                <p class="text-sm text-slate-200">Full-time Job + Spouse (Non AIUBian)</p>
+                <p class="text-sm font-semibold text-amber-200">100 Euro</p>
+              </div>
+            </div>
+            <div class="mt-4 grid gap-3 sm:grid-cols-2">
+              <div class="rounded-xl border border-emerald-400/20 bg-emerald-400/10 px-4 py-3">
+                <p class="text-xs uppercase tracking-[0.24em] text-emerald-200/80">Kids Up To 8 Years</p>
+                <p class="mt-1 text-lg font-semibold text-white">Free</p>
+              </div>
+              <div class="rounded-xl border border-white/10 bg-slate-950/40 px-4 py-3">
+                <p class="text-xs uppercase tracking-[0.24em] text-slate-400">Kids 9-14 Years</p>
+                <p class="mt-1 text-lg font-semibold text-amber-200">20 Euro</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div class="rounded-2xl border border-indigo-400/20 bg-indigo-400/10 px-5 py-4">
+            <p class="text-xs uppercase tracking-[0.3em] text-indigo-200/80">Total Registration Amount</p>
+            <div class="mt-3 grid gap-3 sm:grid-cols-2">
+              <div class="rounded-xl border border-white/10 bg-slate-950/40 px-4 py-3">
+                <p class="text-xs uppercase tracking-[0.24em] text-slate-400">Base Amount</p>
+                <p id="baseAmount" class="mt-1 text-2xl font-semibold text-white">40 Euro</p>
+              </div>
+              <div class="rounded-xl border border-white/10 bg-slate-950/40 px-4 py-3">
+                <p class="text-xs uppercase tracking-[0.24em] text-slate-400">Kids Amount</p>
+                <p id="kidsAmount" class="mt-1 text-2xl font-semibold text-white">0 Euro</p>
+              </div>
+            </div>
+            <div class="mt-3 rounded-xl border border-indigo-300/20 bg-slate-950/40 px-4 py-4">
+              <p class="text-xs uppercase tracking-[0.24em] text-slate-400">Payable Total</p>
+              <p id="totalRegistrationAmount" class="mt-1 text-3xl font-semibold text-indigo-200">40 Euro</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Payment -->
+        <div>
+          <p class="block text-sm font-medium mb-3">Payment <span class="text-xs text-rose-400 uppercase tracking-[0.3em]">mandatory</span></p>
+          <div class="grid gap-3 sm:grid-cols-2">
+            <label class="flex items-center gap-3 rounded-2xl border border-slate-800 bg-slate-900/60 px-4 py-3 cursor-pointer transition hover:border-indigo-400">
+              <input type="radio" name="payment-method" value="bank" class="accent-indigo-500" required>
+              <span class="text-white font-medium">Bank</span>
+            </label>
+            <label class="flex items-center gap-3 rounded-2xl border border-slate-800 bg-slate-900/60 px-4 py-3 cursor-pointer transition hover:border-indigo-400">
+              <input type="radio" name="payment-method" value="paypal" class="accent-indigo-500">
+              <span class="text-white font-medium">PayPal</span>
+            </label>
+          </div>
+          <div id="bankDetails" class="hidden mt-4 rounded-2xl border border-sky-400/20 bg-sky-400/10 px-5 py-4">
+            <p class="text-xs uppercase tracking-[0.3em] text-sky-200/80">Bank Details</p>
+            <div class="mt-3 grid gap-3">
+              <div class="rounded-xl border border-white/10 bg-slate-950/40 px-4 py-3">
+                <p class="text-xs uppercase tracking-[0.24em] text-slate-400">Name</p>
+                <div class="mt-1 flex items-center justify-between gap-3">
+                  <p class="text-sm font-medium text-white">Sayed Muhammad Baker</p>
+                  <button type="button" data-copy-text="Sayed Muhammad Baker"
+                    class="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs font-medium text-sky-100 transition hover:border-sky-300/40 hover:text-white">
+                    Copy
+                  </button>
+                </div>
+              </div>
+              <div class="rounded-xl border border-white/10 bg-slate-950/40 px-4 py-3">
+                <p class="text-xs uppercase tracking-[0.24em] text-slate-400">IBAN</p>
+                <div class="mt-1 flex items-center justify-between gap-3">
+                  <p class="text-sm font-medium text-white">DE88300209003213101278</p>
+                  <button type="button" data-copy-text="DE88300209003213101278"
+                    class="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs font-medium text-sky-100 transition hover:border-sky-300/40 hover:text-white">
+                    Copy
+                  </button>
+                </div>
+              </div>
+              <div class="rounded-xl border border-white/10 bg-slate-950/40 px-4 py-3">
+                <p class="text-xs uppercase tracking-[0.24em] text-slate-400">BIC</p>
+                <div class="mt-1 flex items-center justify-between gap-3">
+                  <p class="text-sm font-medium text-white">CMCIDEDDXXX</p>
+                  <button type="button" data-copy-text="CMCIDEDDXXX"
+                    class="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs font-medium text-sky-100 transition hover:border-sky-300/40 hover:text-white">
+                    Copy
+                  </button>
+                </div>
+              </div>
+              <div class="rounded-xl border border-white/10 bg-slate-950/40 px-4 py-3">
+                <p class="text-xs uppercase tracking-[0.24em] text-slate-400">Reference</p>
+                <div class="mt-1 flex items-center justify-between gap-3">
+                  <p class="text-sm font-medium text-white">Payment for AIUBian In Europe Meetup 2026</p>
+                  <button type="button" data-copy-text="Payment for AIUBian In Europe Meetup 2026"
+                    class="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs font-medium text-sky-100 transition hover:border-sky-300/40 hover:text-white">
+                    Copy
+                  </button>
+                </div>
+              </div>
+            </div>
+            <p class="mt-4 text-sm text-slate-300">
+              Note: If you are paying on behalf for any other, then mention the registered person's name in the reference.
+            </p>
+          </div>
+          <div id="paypalDetails" class="hidden mt-4 rounded-2xl border border-indigo-400/20 bg-indigo-400/10 px-5 py-4">
+            <p class="text-xs uppercase tracking-[0.3em] text-indigo-200/80">PayPal Details</p>
+            <div class="mt-3 grid gap-3">
+              <div class="rounded-xl border border-white/10 bg-slate-950/40 px-4 py-3">
+                <p class="text-xs uppercase tracking-[0.24em] text-slate-400">PayPal</p>
+                <p class="mt-1 text-sm font-medium text-white">Md. Shorab Hossen</p>
+              </div>
+              <div class="rounded-xl border border-white/10 bg-slate-950/40 px-4 py-3">
+                <p class="text-xs uppercase tracking-[0.24em] text-slate-400">Pay To</p>
+                <div class="mt-1 flex items-center justify-between gap-3">
+                  <a href="mailto:hossen.shorab@gmail.com" class="text-sm font-medium text-indigo-200 underline underline-offset-2 hover:text-white">hossen.shorab@gmail.com</a>
+                  <button type="button" data-copy-text="hossen.shorab@gmail.com"
+                    class="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs font-medium text-indigo-100 transition hover:border-indigo-300/40 hover:text-white">
+                    Copy
+                  </button>
+                </div>
+              </div>
+              <div class="rounded-xl border border-white/10 bg-slate-950/40 px-4 py-3">
+                <p class="text-xs uppercase tracking-[0.24em] text-slate-400">Option</p>
+                <p class="mt-1 text-sm font-medium text-white">Friends and Family</p>
+              </div>
+              <div class="rounded-xl border border-white/10 bg-slate-950/40 px-4 py-3">
+                <p class="text-xs uppercase tracking-[0.24em] text-slate-400">Reference</p>
+                <p class="mt-1 text-sm font-medium text-white">AIUBian In Meetup 2026</p>
+              </div>
+            </div>
+            <p class="mt-4 text-sm text-slate-300">
+              Note: If you are paying on behalf for any other, then mention the registered person's name in the reference.
+            </p>
+          </div>
+          <div class="mt-4 rounded-2xl border border-dashed border-indigo-500/70 bg-slate-900/40 px-4 py-4 text-left">
+            <label class="block text-sm font-medium text-white mb-1">Upload proof</label>
+            <p class="text-xs text-slate-400 mb-2">PDF, JPEG, PNG only</p>
+            <input type="file" name="payment-proof" accept=".pdf,.jpeg,.jpg,.png" required
+              class="w-full text-sm text-slate-200 file:mr-3 file:py-2 file:px-4 file:rounded-full file:border-0 file:bg-indigo-500 file:text-white hover:file:bg-indigo-400">
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-slate-900/40 border border-slate-800 rounded-2xl p-6 sm:p-8 shadow-lg space-y-6">
+        <!-- Remarks -->
+        <div>
+          <p class="text-sm font-medium mb-2">
+            Are you in our AIUBian in Europe Whatsapp Group?
+          </p>
+          <div class="flex gap-6">
+            <label class="inline-flex items-center gap-2 text-sm">
+              <input type="radio" name="aiub-whatsapp" value="yes"
+                class="h-4 w-4 text-indigo-500 border-slate-600 bg-slate-900">
+              Yes
+            </label>
+            <label class="inline-flex items-center gap-2 text-sm">
+              <input type="radio" name="aiub-whatsapp" value="no" checked
+                class="h-4 w-4 text-indigo-500 border-slate-600 bg-slate-900">
+              No
+            </label>
+          </div>
+        </div>
+        <div>
+          <p class="text-sm font-medium mb-2">
+            Are you interested in any cultural activities?
+            <span class="block text-xs text-slate-400 mt-1">(singing or playing guitar or any other instruments)</span>
+          </p>
+          <div class="flex gap-6">
+            <label class="inline-flex items-center gap-2 text-sm">
+              <input type="radio" name="cultural-activities" value="yes"
+                class="h-4 w-4 text-indigo-500 border-slate-600 bg-slate-900">
+              Yes
+            </label>
+            <label class="inline-flex items-center gap-2 text-sm">
+              <input type="radio" name="cultural-activities" value="no" checked
+                class="h-4 w-4 text-indigo-500 border-slate-600 bg-slate-900">
+              No
+            </label>
+          </div>
+        </div>
+        <div>
+          <label class="block text-sm font-medium mb-2" for="remarks">Remarks/Notes(Food allergy or Any preferences / No beef or No Lamb):</label>
+          <textarea id="remarks" name="remarks" rows="5" maxlength="600"
+            class="w-full rounded-2xl bg-white/5 px-3 py-2 text-sm text-white border border-white/10 focus:border-indigo-500 outline-none resize-none"
+            placeholder="Inform us of any remarks regarding food or other special requests."></textarea>
+          <p class="text-xs text-slate-400 mt-2">Limit your note to 5–10 lines for faster review.</p>
+        </div>
+
+        <!-- submit -->
+        <div class="flex justify-end">
+          <button
+            class="mt-2 rounded-md bg-indigo-500 px-4 py-2 text-sm font-semibold text-white hover:bg-indigo-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500">
+            Save
+          </button>
+        </div>
+      </div>
+    </form>
+  </main>
+
+  <!-- CONTACT INFO -->
+  <section class="max-w-4xl mx-auto px-4 py-10">
+    <div class="bg-slate-900/60 border border-slate-800 rounded-3xl p-6 text-center">
+      <p class="text-sm uppercase tracking-[0.3em] text-indigo-200 mb-2">Contact Info</p>
+      <p class="text-white text-lg sm:text-xl">For any query please write us <a href="mailto:aiubianineurope@gmail.com" class="text-indigo-300 underline">aiubianineurope@gmail.com</a></p>
+      <p class="text-[0.65rem] text-slate-400 mt-2">Data Protection/Privacy:
+        <button data-privacy="de" class="text-indigo-300 underline hover:text-indigo-200 focus:outline-none">German</button> |
+        <button data-privacy="en" class="text-indigo-300 underline hover:text-indigo-200 focus:outline-none">English</button>
+      </p>
+    </div>
+  </section>
+
+  <div id="privacyModal" class="hidden fixed inset-0 z-40 flex items-center justify-center bg-black/70 px-4">
+    <div class="w-full max-w-3xl rounded-2xl border border-slate-800 bg-slate-950/80 p-6 shadow-2xl text-left">
+      <div class="flex items-center justify-between mb-4">
+        <h3 id="privacyModalTitle" class="text-lg font-semibold text-white"></h3>
+        <button id="privacyModalClose" aria-label="Close privacy notice"
+          class="text-slate-400 transition hover:text-white text-2xl leading-none">&times;</button>
+      </div>
+      <div id="privacyModalBody" class="space-y-2 text-xs leading-relaxed text-slate-200"></div>
+    </div>
+  </div>
+
+  <div id="previewModal" class="hidden fixed inset-0 z-40 flex items-center justify-center bg-black/80 px-4 py-6">
+    <div class="w-full max-w-4xl max-h-full overflow-y-auto rounded-2xl border border-slate-800 bg-slate-950 p-6 shadow-2xl">
+      <div class="flex items-center justify-between gap-4">
+        <div>
+          <p class="text-xs uppercase tracking-[0.3em] text-indigo-200">Preview</p>
+          <h3 class="mt-1 text-xl font-semibold text-white">Review Your Registration</h3>
+        </div>
+        <button id="previewClose" type="button" aria-label="Close preview"
+          class="text-slate-400 transition hover:text-white text-2xl leading-none">&times;</button>
+      </div>
+      <div id="previewBody" class="mt-6 space-y-6"></div>
+      <div class="mt-6 grid gap-3 sm:grid-cols-2 sm:items-center">
+        <button id="previewEdit" type="button"
+          class="rounded-md border border-white/10 bg-white/5 px-4 py-2 text-sm font-semibold text-white hover:border-indigo-400/50 hover:bg-white/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500 sm:justify-self-start">
+          Go back and edit
+        </button>
+        <button id="previewSubmit" type="button"
+          class="rounded-md bg-indigo-500 px-4 py-2 text-sm font-semibold text-white hover:bg-indigo-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500 sm:justify-self-end">
+          Submit
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div id="successModal" class="hidden fixed inset-0 z-40 flex items-center justify-center bg-black/80 px-4 py-6">
+    <div class="w-full max-w-lg rounded-2xl border border-slate-800 bg-slate-950 p-6 shadow-2xl text-center">
+      <div class="mb-4 flex justify-center">
+        <img src="../logo/aiubineurope.png" alt="AIUBian in Europe logo" class="h-20 w-auto object-contain">
+      </div>
+      <p class="text-xs uppercase tracking-[0.3em] text-indigo-200">Registration Complete</p>
+      <h3 class="mt-3 text-2xl font-semibold text-white">Thanks for your Registration for the upcoming MeetUp 2026</h3>
+      <p class="mt-3 text-sm text-slate-300">You can now download your registration summary as a PDF.</p>
+      <div class="mt-6 grid gap-3 sm:grid-cols-2">
+        <button id="successClose" type="button"
+          class="rounded-md border border-white/10 bg-white/5 px-4 py-2 text-sm font-semibold text-white hover:border-indigo-400/50 hover:bg-white/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500">
+          Close
+        </button>
+        <button id="successDownload" type="button"
+          class="rounded-md bg-indigo-500 px-4 py-2 text-sm font-semibold text-white hover:bg-indigo-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500">
+          Download PDF
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- POPUP (hidden by default) -->
+  <div id="spouseModal"
+    class="hidden fixed inset-0 z-50 bg-black/60 flex items-center justify-center px-4">
+    <div class="bg-slate-900 border border-slate-700 rounded-2xl p-6 max-w-md w-full text-center">
+      <h3 class="text-lg font-semibold mb-2 text-white">Quick note 💡</h3>
+      <p class="text-sm text-slate-200 mb-4">
+        If your spouse is an <span class="font-semibold text-indigo-200">AIUBian</span>, please register
+        him/her separately. In that case, both of you will be counted separately, so keep your registration as
+        <span class="font-semibold text-indigo-200">Alone</span>. Thank you!
+      </p>
+      <button id="closeModal"
+        class="mt-2 rounded-md bg-indigo-500 px-4 py-2 text-sm font-semibold text-white hover:bg-indigo-400">
+        Okay, got it
+      </button>
+    </div>
+  </div>
+
+  </div>
+
+  <div class="fixed bottom-4 right-4 text-center text-[0.65rem] text-slate-300">
+    <p class="uppercase tracking-[0.35em] text-[0.55rem] text-slate-400">Developed and maintained by</p>
+    <a href="https://www.codactics.com/" target="_blank" rel="noopener noreferrer" class="lot-font text-red-500 hover:text-red-400">CODACTICS</a>
+  </div>
+
+  <script>
+    /* -------- PHONE COUNTRY PICKER -------- */
+    const countries = [
+      { cc: "at", code: "+43", name: "Austria" },
+      { cc: "be", code: "+32", name: "Belgium" },
+      { cc: "bg", code: "+359", name: "Bulgaria" },
+      { cc: "hr", code: "+385", name: "Croatia" },
+      { cc: "cy", code: "+357", name: "Cyprus" },
+      { cc: "cz", code: "+420", name: "Czechia" },
+      { cc: "dk", code: "+45", name: "Denmark" },
+      { cc: "ee", code: "+372", name: "Estonia" },
+      { cc: "fi", code: "+358", name: "Finland" },
+      { cc: "fr", code: "+33", name: "France" },
+      { cc: "de", code: "+49", name: "Germany" },
+      { cc: "gr", code: "+30", name: "Greece" },
+      { cc: "hu", code: "+36", name: "Hungary" },
+      { cc: "is", code: "+354", name: "Iceland" },
+      { cc: "ie", code: "+353", name: "Ireland" },
+      { cc: "it", code: "+39", name: "Italy" },
+      { cc: "lv", code: "+371", name: "Latvia" },
+      { cc: "lt", code: "+370", name: "Lithuania" },
+      { cc: "lu", code: "+352", name: "Luxembourg" },
+      { cc: "mt", code: "+356", name: "Malta" },
+      { cc: "nl", code: "+31", name: "Netherlands" },
+      { cc: "no", code: "+47", name: "Norway" },
+      { cc: "pl", code: "+48", name: "Poland" },
+      { cc: "pt", code: "+351", name: "Portugal" },
+      { cc: "ro", code: "+40", name: "Romania" },
+      { cc: "sk", code: "+421", name: "Slovakia" },
+      { cc: "si", code: "+386", name: "Slovenia" },
+      { cc: "es", code: "+34", name: "Spain" },
+      { cc: "se", code: "+46", name: "Sweden" },
+      { cc: "ch", code: "+41", name: "Switzerland" },
+      { cc: "gb", code: "+44", name: "United Kingdom" },
+    ];
+
+    const listEl = document.getElementById("countryList");
+    const btnEl = document.getElementById("countryButton");
+    const flagEl = document.getElementById("countryFlag");
+    const codeEl = document.getElementById("countryCode");
+    const nameEl = document.getElementById("countryName");
+    const hiddenEl = document.getElementById("phoneCodeHidden");
+    const picker = document.getElementById("countryPicker");
+
+    countries.forEach((c) => {
+      const btn = document.createElement("button");
+      btn.type = "button";
+      btn.className = "w-full flex items-center gap-3 px-3 py-2 text-sm hover:bg-slate-800";
+      btn.innerHTML = `
+        <img src="https://flagcdn.com/w40/${c.cc}.png" class="w-7 h-5 object-cover rounded-sm" alt="${c.name} flag">
+        <span class="flex-1 text-left">
+          <span class="font-medium">${c.code}</span>
+          <span class="block text-xs text-slate-300">${c.name}</span>
+        </span>
+      `;
+      btn.addEventListener("click", () => {
+        flagEl.src = `https://flagcdn.com/w40/${c.cc}.png`;
+        codeEl.textContent = c.code;
+        nameEl.textContent = c.name;
+        hiddenEl.value = c.code;
+        listEl.classList.add("hidden");
+      });
+      listEl.appendChild(btn);
+    });
+
+    btnEl.addEventListener("click", () => {
+      listEl.classList.toggle("hidden");
+    });
+
+    document.addEventListener("click", (e) => {
+      if (!picker.contains(e.target)) {
+        listEl.classList.add("hidden");
+      }
+    });
+
+    /* -------- AIUB DEPARTMENT PICKER -------- */
+    const deptPicker = document.getElementById("deptPicker");
+    const deptButton = document.getElementById("deptButton");
+    const deptList = document.getElementById("deptList");
+    const deptLabel = document.getElementById("deptLabel");
+    const deptValue = document.getElementById("deptValue");
+
+    deptButton.addEventListener("click", () => {
+      deptList.classList.toggle("hidden");
+    });
+
+    Array.from(deptList.querySelectorAll("button")).forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const text = btn.textContent.trim();
+        const color = btn.getAttribute("style");
+        const value = btn.dataset.value;
+        deptLabel.textContent = text;
+        deptLabel.setAttribute("style", color);
+        deptValue.value = value;
+        deptList.classList.add("hidden");
+      });
+    });
+
+    document.addEventListener("click", (e) => {
+      if (!deptPicker.contains(e.target)) {
+        deptList.classList.add("hidden");
+      }
+    });
+
+    /* -------- SPOUSE POPUP -------- */
+    const spouseRadio = document.getElementById("withSpouse");
+    const spouseModal = document.getElementById("spouseModal");
+    const closeModal = document.getElementById("closeModal");
+
+    spouseRadio.addEventListener("change", () => {
+      if (spouseRadio.checked) {
+        spouseModal.classList.remove("hidden");
+      }
+    });
+
+    closeModal.addEventListener("click", () => {
+      spouseModal.classList.add("hidden");
+    });
+
+    // close modal when clicking outside
+    spouseModal.addEventListener("click", (e) => {
+      if (e.target === spouseModal) {
+        spouseModal.classList.add("hidden");
+      }
+    });
+
+
+
+
+
+
+  /* -------- PROFESSIONAL STATUS PICKER -------- */
+  const statusPicker = document.getElementById("statusPicker");
+  const statusButton = document.getElementById("statusButton");
+  const statusList = document.getElementById("statusList");
+  const statusLabel = document.getElementById("statusLabel");
+  const statusValue = document.getElementById("statusValue");
+
+  statusButton.addEventListener("click", () => {
+    statusList.classList.toggle("hidden");
+  });
+
+  Array.from(statusList.querySelectorAll("button")).forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const text = btn.textContent.trim();
+      const value = btn.dataset.value;
+      statusLabel.textContent = text;
+      statusValue.value = value;
+      statusList.classList.add("hidden");
+      updateRegistrationAmount();
+    });
+  });
+
+  // close when clicking outside
+  document.addEventListener("click", (e) => {
+    if (!statusPicker.contains(e.target)) {
+      statusList.classList.add("hidden");
+    }
+  });
+
+  /* -------- KIDS COUNTERS -------- */
+  const comingInputs = document.querySelectorAll('input[name="coming"]');
+  const adultCount = document.getElementById("adultCount");
+  const kidsCount = document.getElementById("kidsCount");
+  const totalParticipantCount = document.getElementById("totalParticipantCount");
+  const baseAmount = document.getElementById("baseAmount");
+  const kidsAmount = document.getElementById("kidsAmount");
+  const totalRegistrationAmount = document.getElementById("totalRegistrationAmount");
+
+  const updateParticipantSummary = () => {
+    const isWithSpouse = spouseRadio.checked;
+    const adults = isWithSpouse ? 2 : 1;
+    const kids = Array.from(document.querySelectorAll("[data-counter-input]")).reduce((sum, input) => {
+      const value = parseInt(input.value, 10);
+      return sum + (Number.isNaN(value) ? 0 : value);
+    }, 0);
+
+    adultCount.textContent = adults.toString();
+    kidsCount.textContent = kids.toString();
+    totalParticipantCount.textContent = (adults + kids).toString();
+  };
+
+  const updateRegistrationAmount = () => {
+    const professionalStatus = statusValue?.value ?? "student";
+    const isWithSpouse = spouseRadio.checked;
+    const kidsEightToSixteen = parseInt(document.querySelectorAll("[data-counter-input]")[1]?.value ?? "0", 10) || 0;
+
+    let base = 40;
+
+    if (professionalStatus === "fulltime") {
+      base = isWithSpouse ? 100 : 60;
+    } else if (professionalStatus === "student" || professionalStatus === "other") {
+      base = isWithSpouse ? 80 : 40;
+    }
+
+    const kidsCost = kidsEightToSixteen * 20;
+    const total = base + kidsCost;
+
+    if (baseAmount) baseAmount.textContent = `${base} Euro`;
+    if (kidsAmount) kidsAmount.textContent = `${kidsCost} Euro`;
+    if (totalRegistrationAmount) totalRegistrationAmount.textContent = `${total} Euro`;
+  };
+
+  comingInputs.forEach((input) => {
+    input.addEventListener("change", () => {
+      updateParticipantSummary();
+      updateRegistrationAmount();
+    });
+  });
+
+  document.querySelectorAll("[data-counter]").forEach((block) => {
+    const input = block.querySelector("[data-counter-input]");
+    if (!input) return;
+
+    const parseBound = (value, fallback) => {
+      const parsed = parseInt(value, 10);
+      return Number.isNaN(parsed) ? fallback : parsed;
+    };
+
+    const min = parseBound(input.min, 0);
+    const max = parseBound(input.max, 10);
+    const clamp = (value) => Math.min(max, Math.max(min, value));
+
+    const setValue = (value) => {
+      input.value = clamp(value).toString();
+      updateParticipantSummary();
+      updateRegistrationAmount();
+    };
+
+    block.querySelectorAll("button[data-counter-adjust]").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const delta = parseInt(btn.dataset.counterAdjust, 10) || 0;
+        const current = parseInt(input.value, 10);
+        const base = Number.isNaN(current) ? min : current;
+        setValue(base + delta);
+      });
+    });
+
+    input.addEventListener("input", () => {
+      const parsed = parseInt(input.value, 10);
+      setValue(Number.isNaN(parsed) ? min : parsed);
+    });
+  });
+
+  updateParticipantSummary();
+  updateRegistrationAmount();
+
+  const paymentMethodInputs = document.querySelectorAll('input[name="payment-method"]');
+  const bankDetails = document.getElementById("bankDetails");
+  const paypalDetails = document.getElementById("paypalDetails");
+
+  const updatePaymentDetails = () => {
+    const selectedPayment = document.querySelector('input[name="payment-method"]:checked')?.value;
+    bankDetails?.classList.toggle("hidden", selectedPayment !== "bank");
+    paypalDetails?.classList.toggle("hidden", selectedPayment !== "paypal");
+  };
+
+  paymentMethodInputs.forEach((input) => {
+    input.addEventListener("change", updatePaymentDetails);
+  });
+
+  updatePaymentDetails();
+
+  document.querySelectorAll("[data-copy-text]").forEach((button) => {
+    button.addEventListener("click", async () => {
+      const text = button.getAttribute("data-copy-text") || "";
+      const originalLabel = button.textContent;
+
+      try {
+        await navigator.clipboard.writeText(text);
+        button.textContent = "Copied";
+      } catch {
+        button.textContent = "Failed";
+      }
+
+      window.setTimeout(() => {
+        button.textContent = originalLabel;
+      }, 1200);
+    });
+  });
+
+  const eventForm = document.getElementById("eventForm");
+  const previewModal = document.getElementById("previewModal");
+  const previewBody = document.getElementById("previewBody");
+  const previewClose = document.getElementById("previewClose");
+  const previewEdit = document.getElementById("previewEdit");
+  const previewSubmit = document.getElementById("previewSubmit");
+  const successModal = document.getElementById("successModal");
+  const successClose = document.getElementById("successClose");
+  const successDownload = document.getElementById("successDownload");
+
+  const getCheckedValue = (name) => document.querySelector(`input[name="${name}"]:checked`)?.value ?? "Not selected";
+  const escapeHtml = (value) => String(value)
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;");
+
+  const formatChoice = (valueMap, value) => valueMap[value] ?? value ?? "Not provided";
+
+  const buildPreviewRow = (label, value) => `
+    <div class="rounded-xl border border-white/10 bg-white/5 px-4 py-3">
+      <p class="text-xs uppercase tracking-[0.24em] text-slate-400">${escapeHtml(label)}</p>
+      <p class="mt-1 text-sm font-medium text-white break-words">${escapeHtml(value || "Not provided")}</p>
+    </div>
+  `;
+
+  const appendFilePreview = (container, label, file) => {
+    const wrapper = document.createElement("div");
+    wrapper.className = "rounded-xl border border-white/10 bg-white/5 px-4 py-3";
+
+    const title = document.createElement("p");
+    title.className = "text-xs uppercase tracking-[0.24em] text-slate-400";
+    title.textContent = label;
+    wrapper.appendChild(title);
+
+    const name = document.createElement("p");
+    name.className = "mt-1 text-sm font-medium text-white break-words";
+    name.textContent = file ? file.name : "No file uploaded";
+    wrapper.appendChild(name);
+
+    if (file && file.type.startsWith("image/")) {
+      const img = document.createElement("img");
+      img.className = "mt-3 max-h-52 rounded-lg border border-white/10 object-contain";
+      img.src = URL.createObjectURL(file);
+      img.alt = label;
+      img.addEventListener("load", () => URL.revokeObjectURL(img.src), { once: true });
+      wrapper.appendChild(img);
+    }
+
+    container.appendChild(wrapper);
+  };
+
+  const renderPreview = () => {
+    if (!previewBody) return;
+
+    const phoneCode = hiddenEl?.value ?? "";
+    const phoneNumber = eventForm?.elements["phone-number"]?.value?.trim() ?? "";
+    const photoFile = eventForm?.elements["photo"]?.files?.[0];
+    const proofFile = eventForm?.elements["payment-proof"]?.files?.[0];
+
+    const personalRows = [
+      ["Last Name", eventForm?.elements["last-name"]?.value?.trim()],
+      ["First Name", eventForm?.elements["first-name"]?.value?.trim()],
+      ["Middle Name", eventForm?.elements["middle-name"]?.value?.trim() || "Optional / not provided"],
+      ["Email", eventForm?.elements["email"]?.value?.trim()],
+      ["Phone", `${phoneCode} ${phoneNumber}`.trim()],
+      ["AIUB Department", deptLabel?.textContent?.trim()],
+      ["AIUB ID", eventForm?.elements["aiub-id"]?.value?.trim()],
+      ["City in Europe Right Now", eventForm?.elements["current-city"]?.value?.trim()],
+      ["Country", eventForm?.elements["current-country"]?.value?.trim()],
+      ["Professional Status", statusLabel?.textContent?.trim()],
+    ];
+
+    const attendanceRows = [
+      ["Coming", formatChoice({ alone: "Alone", "with-spouse": "With spouse (non AIUBian)" }, getCheckedValue("coming"))],
+      ["Kids (0 to 7)", document.querySelectorAll("[data-counter-input]")[0]?.value ?? "0"],
+      ["Kids (8 to 16)", document.querySelectorAll("[data-counter-input]")[1]?.value ?? "0"],
+      ["Adults", adultCount?.textContent?.trim()],
+      ["Kids", kidsCount?.textContent?.trim()],
+      ["Total Participants", totalParticipantCount?.textContent?.trim()],
+      ["Base Amount", baseAmount?.textContent?.trim()],
+      ["Kids Amount", kidsAmount?.textContent?.trim()],
+      ["Payable Total", totalRegistrationAmount?.textContent?.trim()],
+      ["Payment Method", formatChoice({ bank: "Bank", paypal: "PayPal" }, getCheckedValue("payment-method"))],
+      ["WhatsApp Group", formatChoice({ yes: "Yes", no: "No" }, getCheckedValue("aiub-whatsapp"))],
+      ["Cultural Activities", formatChoice({ yes: "Yes", no: "No" }, getCheckedValue("cultural-activities"))],
+      ["Remarks / Notes", eventForm?.elements["remarks"]?.value?.trim() || "No remarks provided"],
+    ];
+
+    previewBody.innerHTML = `
+      <section class="rounded-2xl border border-slate-800 bg-slate-900/50 p-5">
+        <p class="text-xs uppercase tracking-[0.3em] text-indigo-200">Event</p>
+        <div class="mt-4 grid gap-3 sm:grid-cols-2">
+          ${buildPreviewRow("Title", "AIUBian In Europe MeetUp 26")}
+          ${buildPreviewRow("Date", "29th August 2026 (Saturday)")}
+          <div class="sm:col-span-2">${buildPreviewRow("Location", "SAALBAU Gallus, Frankenallee 111, 60326 Frankfurt am Main")}</div>
+        </div>
+      </section>
+      <section class="rounded-2xl border border-slate-800 bg-slate-900/50 p-5">
+        <p class="text-xs uppercase tracking-[0.3em] text-indigo-200">Personal Information</p>
+        <div class="mt-4 grid gap-3 sm:grid-cols-2">
+          ${personalRows.map(([label, value]) => buildPreviewRow(label, value)).join("")}
+        </div>
+      </section>
+      <section class="rounded-2xl border border-slate-800 bg-slate-900/50 p-5">
+        <p class="text-xs uppercase tracking-[0.3em] text-indigo-200">Attendance And Payment</p>
+        <div class="mt-4 grid gap-3 sm:grid-cols-2">
+          ${attendanceRows.map(([label, value]) => buildPreviewRow(label, value)).join("")}
+        </div>
+      </section>
+    `;
+
+    const filesSection = document.createElement("section");
+    filesSection.className = "rounded-2xl border border-slate-800 bg-slate-900/50 p-5";
+    filesSection.innerHTML = `<p class="text-xs uppercase tracking-[0.3em] text-indigo-200">Uploads</p>`;
+
+    const filesGrid = document.createElement("div");
+    filesGrid.className = "mt-4 grid gap-3 sm:grid-cols-2";
+    appendFilePreview(filesGrid, "Photo", photoFile);
+    appendFilePreview(filesGrid, "Payment Proof", proofFile);
+    filesSection.appendChild(filesGrid);
+    previewBody.appendChild(filesSection);
+  };
+
+  const closePreviewModal = () => {
+    previewModal?.classList.add("hidden");
+  };
+
+  const closeSuccessModal = () => {
+    successModal?.classList.add("hidden");
+  };
+
+  const submitRegistration = async () => {
+    if (!eventForm) return false;
+
+    const formData = new FormData(eventForm);
+
+    try {
+      previewSubmit?.setAttribute("disabled", "disabled");
+      if (previewSubmit) previewSubmit.textContent = "Submitting...";
+
+      const response = await fetch("/api/registrations", {
+        method: "POST",
+        body: formData,
+      });
+
+      const payload = await response.json().catch(() => ({ ok: false }));
+      if (!response.ok || !payload.ok) {
+        throw new Error(payload.error || "Submission failed");
+      }
+
+      return true;
+    } catch (error) {
+      const isFilePage = window.location.protocol === "file:";
+      const message = isFilePage
+        ? "Failed to submit registration. Open this form through the local server at http://localhost:3000, not as a file."
+        : "Failed to submit registration. Make sure the backend server is running with npm start and open the form from http://localhost:3000.";
+      window.alert(message);
+      return false;
+    } finally {
+      previewSubmit?.removeAttribute("disabled");
+      if (previewSubmit) previewSubmit.textContent = "Submit";
+    }
+  };
+
+  const resetFormState = () => {
+    eventForm?.reset();
+
+    if (flagEl) flagEl.src = "https://flagcdn.com/w40/de.png";
+    if (codeEl) codeEl.textContent = "+49";
+    if (nameEl) nameEl.textContent = "Germany";
+    if (hiddenEl) hiddenEl.value = "+49";
+
+    if (deptLabel) {
+      deptLabel.textContent = "Faculty of Science and Technology";
+      deptLabel.setAttribute("style", "background:#1d4ed8");
+    }
+    if (deptValue) deptValue.value = "FST";
+
+    if (statusLabel) statusLabel.textContent = "Student";
+    if (statusValue) statusValue.value = "student";
+
+    document.querySelectorAll("[data-counter-input]").forEach((input) => {
+      if (input instanceof HTMLInputElement) {
+        input.value = "0";
+      }
+    });
+
+    updateParticipantSummary();
+    updateRegistrationAmount();
+    updatePaymentDetails();
+
+    if (previewBody) previewBody.innerHTML = "";
+  };
+
+  const downloadRegistrationPdf = async () => {
+    const jsPdfCtor = window.jspdf?.jsPDF;
+    if (!eventForm || !jsPdfCtor) return;
+
+    const doc = new jsPdfCtor({ unit: "mm", format: "a4", orientation: "portrait" });
+    const pageWidth = doc.internal.pageSize.getWidth();
+    const pageHeight = doc.internal.pageSize.getHeight();
+    const margin = 14;
+    const contentWidth = pageWidth - margin * 2;
+    let y = margin;
+
+    const phoneCode = hiddenEl?.value ?? "";
+    const phoneNumber = eventForm.elements["phone-number"]?.value?.trim() ?? "";
+    const photoUpload = eventForm.elements["photo"]?.files?.[0];
+    const proofUpload = eventForm.elements["payment-proof"]?.files?.[0];
+    const photoFile = photoUpload?.name || "No file uploaded";
+    const proofFile = proofUpload?.name || "No file uploaded";
+
+    const rows = [
+      ["Event", "AIUBian In Europe MeetUp 26"],
+      ["Date", "29th August 2026 (Saturday)"],
+      ["Location", "SAALBAU Gallus, Frankenallee 111, 60326 Frankfurt am Main"],
+      ["Last Name", eventForm.elements["last-name"]?.value?.trim() || "Not provided"],
+      ["First Name", eventForm.elements["first-name"]?.value?.trim() || "Not provided"],
+      ["Middle Name", eventForm.elements["middle-name"]?.value?.trim() || "Optional / not provided"],
+      ["Email", eventForm.elements["email"]?.value?.trim() || "Not provided"],
+      ["Phone", `${phoneCode} ${phoneNumber}`.trim() || "Not provided"],
+      ["AIUB Department", deptLabel?.textContent?.trim() || "Not provided"],
+      ["AIUB ID", eventForm.elements["aiub-id"]?.value?.trim() || "Not provided"],
+      ["City In Europe Right Now", eventForm.elements["current-city"]?.value?.trim() || "Not provided"],
+      ["Country", eventForm.elements["current-country"]?.value?.trim() || "Not provided"],
+      ["Professional Status", statusLabel?.textContent?.trim() || "Not provided"],
+      ["Coming", formatChoice({ alone: "Alone", "with-spouse": "With spouse (non AIUBian)" }, getCheckedValue("coming"))],
+      ["Kids (0 to 7)", document.querySelectorAll("[data-counter-input]")[0]?.value ?? "0"],
+      ["Kids (8 to 16)", document.querySelectorAll("[data-counter-input]")[1]?.value ?? "0"],
+      ["Adults", adultCount?.textContent?.trim() || "0"],
+      ["Kids", kidsCount?.textContent?.trim() || "0"],
+      ["Total Participants", totalParticipantCount?.textContent?.trim() || "0"],
+      ["Base Amount", baseAmount?.textContent?.trim() || "0 Euro"],
+      ["Kids Amount", kidsAmount?.textContent?.trim() || "0 Euro"],
+      ["Payable Total", totalRegistrationAmount?.textContent?.trim() || "0 Euro"],
+      ["Payment Method", formatChoice({ bank: "Bank", paypal: "PayPal" }, getCheckedValue("payment-method"))],
+      ["WhatsApp Group", formatChoice({ yes: "Yes", no: "No" }, getCheckedValue("aiub-whatsapp"))],
+      ["Cultural Activities", formatChoice({ yes: "Yes", no: "No" }, getCheckedValue("cultural-activities"))],
+      ["Remarks / Notes", eventForm.elements["remarks"]?.value?.trim() || "No remarks provided"],
+      ["Photo Upload", photoFile],
+      ["Payment Proof Upload", proofFile],
+    ];
+
+    const ensureSpace = (neededHeight = 10) => {
+      if (y + neededHeight <= pageHeight - margin) return;
+      doc.addPage();
+      doc.setFillColor(2, 6, 23);
+      doc.rect(0, 0, pageWidth, pageHeight, "F");
+      y = margin;
+    };
+
+    const fileToDataUrl = (file) => new Promise((resolve) => {
+      if (!file || !file.type.startsWith("image/")) {
+        resolve(null);
+        return;
+      }
+
+      const reader = new FileReader();
+      reader.onload = () => resolve(typeof reader.result === "string" ? reader.result : null);
+      reader.onerror = () => resolve(null);
+      reader.readAsDataURL(file);
+    });
+
+    doc.setFillColor(2, 6, 23);
+    doc.rect(0, 0, pageWidth, pageHeight, "F");
+
+    doc.setTextColor(199, 210, 254);
+    doc.setFont("helvetica", "normal");
+    doc.setFontSize(10);
+    doc.text("REGISTRATION PREVIEW", margin, y);
+    y += 8;
+
+    doc.setTextColor(255, 255, 255);
+    doc.setFont("helvetica", "bold");
+    doc.setFontSize(18);
+    doc.text("AIUBian In Europe MeetUp 26", margin, y);
+    y += 10;
+
+    doc.setFont("helvetica", "normal");
+    doc.setFontSize(11);
+    doc.setTextColor(226, 232, 240);
+    doc.text("Registration Summary", margin, y);
+    y += 10;
+
+    rows.forEach(([label, value]) => {
+      const valueLines = doc.splitTextToSize(String(value), contentWidth - 40);
+      const boxHeight = 8 + Math.max(6, valueLines.length * 5) + 5;
+      ensureSpace(boxHeight + 3);
+
+      doc.setDrawColor(51, 65, 85);
+      doc.setFillColor(15, 23, 42);
+      doc.roundedRect(margin, y, contentWidth, boxHeight, 3, 3, "FD");
+
+      doc.setTextColor(148, 163, 184);
+      doc.setFont("helvetica", "normal");
+      doc.setFontSize(9);
+      doc.text(String(label).toUpperCase(), margin + 4, y + 6);
+
+      doc.setTextColor(255, 255, 255);
+      doc.setFont("helvetica", "bold");
+      doc.setFontSize(11);
+      doc.text(valueLines, margin + 4, y + 12);
+
+      y += boxHeight + 3;
+    });
+
+    const imageUploads = [
+      ["Photo Upload Preview", photoUpload],
+      ["Payment Proof Preview", proofUpload],
+    ];
+
+    for (const [label, file] of imageUploads) {
+      const imageData = await fileToDataUrl(file);
+      if (!imageData) continue;
+
+      ensureSpace(18);
+      doc.setTextColor(199, 210, 254);
+      doc.setFont("helvetica", "normal");
+      doc.setFontSize(10);
+      doc.text(label.toUpperCase(), margin, y);
+      y += 6;
+
+      const imageProps = doc.getImageProperties(imageData);
+      const imageWidth = Math.min(contentWidth, 80);
+      const imageHeight = (imageProps.height * imageWidth) / imageProps.width;
+      ensureSpace(imageHeight + 6);
+      doc.addImage(imageData, "PNG", margin, y, imageWidth, imageHeight);
+      y += imageHeight + 6;
+    }
+
+    doc.save("aiubian_in_europe_meetup26_reg.pdf");
+  };
+
+  eventForm?.addEventListener("submit", (event) => {
+    event.preventDefault();
+    renderPreview();
+    previewModal?.classList.remove("hidden");
+  });
+
+  previewClose?.addEventListener("click", closePreviewModal);
+  previewEdit?.addEventListener("click", closePreviewModal);
+  eventForm?.elements["phone-number"]?.addEventListener("input", (event) => {
+    const input = event.target;
+    if (!(input instanceof HTMLInputElement)) return;
+    input.value = input.value.replace(/\D/g, "");
+  });
+  previewSubmit?.addEventListener("click", async () => {
+    const submitted = await submitRegistration();
+    if (!submitted) return;
+    closePreviewModal();
+    successModal?.classList.remove("hidden");
+  });
+  successClose?.addEventListener("click", () => {
+    closeSuccessModal();
+    resetFormState();
+  });
+  successDownload?.addEventListener("click", downloadRegistrationPdf);
+  successModal?.addEventListener("click", (event) => {
+    if (event.target === successModal) {
+      closeSuccessModal();
+      resetFormState();
+    }
+  });
+  previewModal?.addEventListener("click", (event) => {
+    if (event.target === previewModal) {
+      closePreviewModal();
+    }
+  });
+
+  const privacyModal = document.getElementById("privacyModal");
+  const privacyModalTitle = document.getElementById("privacyModalTitle");
+  const privacyModalBody = document.getElementById("privacyModalBody");
+  const privacyModalClose = document.getElementById("privacyModalClose");
+
+  const privacyTexts = {
+    de: `
+      <p class="text-sm font-semibold text-indigo-200">🇩🇪 Datenschutzhinweis (Event-Registrierung)</p>
+      <p><strong>1. Verantwortlicher</strong><br>[Name / Organisation]<br>[Adresse]<br>[E-Mail]</p>
+      <p><strong>2. Zweck der Datenverarbeitung</strong><br>Wir erheben und verarbeiten Ihre personenbezogenen Daten ausschließlich zur Organisation und Durchführung der Veranstaltung.</p>
+      <p><strong>3. Verarbeitete Daten</strong><br>Vor- und Nachname<br>E-Mail-Adresse<br>Telefonnummer<br>Foto (optional)</p>
+      <p><strong>4. Rechtsgrundlage</strong><br>Die Verarbeitung Ihrer personenbezogenen Daten erfolgt gemäß Art. 6 Abs. 1 lit. a DSGVO (Einwilligung).</p>
+      <p><strong>5. Weitergabe von Daten</strong><br>Ihre Daten werden nicht an Dritte weitergegeben und nicht für kommerzielle oder Marketingzwecke verwendet.</p>
+      <p><strong>6. Speicherdauer</strong><br>Ihre personenbezogenen Daten werden spätestens 1 Monat nach dem Veranstaltungsdatum gelöscht, sofern keine gesetzliche Aufbewahrungspflicht besteht.</p>
+      <p><strong>7. Widerruf der Einwilligung</strong><br>Sie können Ihre Einwilligung jederzeit mit Wirkung für die Zukunft widerrufen (Art. 7 Abs. 3 DSGVO), indem Sie uns kontaktieren.</p>
+      <p><strong>8. Ihre Rechte</strong><br>Auskunft (Art. 15 DSGVO)<br>Berichtigung (Art. 16 DSGVO)<br>Löschung (Art. 17 DSGVO)<br>Einschränkung der Verarbeitung (Art. 18 DSGVO)<br>Datenübertragbarkeit (Art. 20 DSGVO)<br>Beschwerde bei einer Datenschutzaufsichtsbehörde (Art. 77 DSGVO)</p>
+      <p class="text-xs"><a href="https://eur-lex.europa.eu/eli/reg/2016/679/oj" class="text-indigo-300 underline">Gesetzestext</a></p>
+    `,
+    en: `
+      <p class="text-sm font-semibold text-indigo-200">🇬🇧 Privacy Notice (Event Registration)</p>
+      <p><strong>1. Data Controller</strong><br>[Name / Organization]<br>[Address]<br>[Email]</p>
+      <p><strong>2. Purpose of Processing</strong><br>We collect and process your personal data solely for the organization and administration of this event.</p>
+      <p><strong>3. Personal Data Collected</strong><br>Full name<br>Email address<br>Phone number<br>Photo (optional)</p>
+      <p><strong>4. Legal Basis</strong><br>Processing is based on your consent in accordance with Article 6(1)(a) GDPR (EU Regulation 2016/679).</p>
+      <p><strong>5. Data Sharing</strong><br>Your data will not be shared with third parties and will not be used for commercial or marketing purposes.</p>
+      <p><strong>6. Data Retention</strong><br>Your personal data will be deleted no later than 1 month after the event date, unless legal retention obligations apply.</p>
+      <p><strong>7. Withdrawal of Consent</strong><br>You may withdraw your consent at any time with future effect (Article 7(3) GDPR) by contacting us.</p>
+      <p><strong>8. Your Rights</strong><br>Access (Art. 15 GDPR)<br>Rectification (Art. 16 GDPR)<br>Erasure (Art. 17 GDPR)<br>Restriction of processing (Art. 18 GDPR)<br>Data portability (Art. 20 GDPR)<br>Lodge a complaint with a supervisory authority (Art. 77 GDPR)</p>
+      <p class="text-xs"><a href="https://eur-lex.europa.eu/eli/reg/2016/679/oj" class="text-indigo-300 underline">Official GDPR text</a></p>
+    `
+  };
+
+  document.querySelectorAll("[data-privacy]").forEach((trigger) => {
+    trigger.addEventListener("click", () => {
+      const lang = trigger.dataset.privacy;
+      if (!privacyModal || !privacyModalBody || !privacyModalTitle) return;
+      privacyModalTitle.textContent = lang === "de" ? "Datenschutzhinweis" : "Privacy Notice";
+      privacyModalBody.innerHTML = privacyTexts[lang] ?? "";
+      privacyModal.classList.remove("hidden");
+    });
+  });
+
+  const closePrivacy = () => privacyModal?.classList.add("hidden");
+  privacyModalClose?.addEventListener("click", closePrivacy);
+  privacyModal?.addEventListener("click", (e) => {
+    if (e.target === privacyModal) {
+      closePrivacy();
+    }
+  });
+  const agreementOverlay = document.getElementById("agreementOverlay");
+  const appContent = document.getElementById("appContent");
+  const agreeButton = document.getElementById("agreeButton");
+
+  agreeButton?.addEventListener("click", () => {
+    agreementOverlay?.classList.add("hidden");
+    appContent?.classList.remove("hidden");
+  });
+
+
+
+
+
+  </script>
+</body>
+</html>

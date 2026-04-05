@@ -1,0 +1,20 @@
+{
+  "name": "aiub_in_europe_meetup_form",
+  "version": "1.0.0",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "cloudinary": "^2.9.0",
+    "dotenv": "^17.4.0",
+    "express": "^5.2.1",
+    "mongodb": "^7.1.1",
+    "multer": "^2.1.1"
+  }
+}
