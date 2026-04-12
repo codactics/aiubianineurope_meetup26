@@ -35,6 +35,11 @@ const getCollection = async () => {
   return collectionPromise;
 };
 
+const normalizeTshirtSize = (value) => {
+  const normalized = String(value ?? "").trim();
+  return !normalized || normalized === "-" ? "N/A" : normalized;
+};
+
 const uploadToCloudinary = (file, folder, resourceType = "auto") =>
   new Promise((resolve, reject) => {
     if (!file) {
@@ -110,6 +115,8 @@ app.post(
         uploadToCloudinary(paymentProofFile, "aiubian-in-europe/meetup26/payment-proofs", "auto"),
       ]);
 
+      const includeInBrochure = (req.body["career-consent"] || "no") === "yes";
+
       const document = {
         event: {
           title: "AIUBian In Europe MeetUp 26",
@@ -148,11 +155,24 @@ app.post(
               }
             : null,
         },
+        merchandise: {
+          tshirtSize: normalizeTshirtSize(req.body["tshirt-size"]),
+        },
         social: {
           whatsappGroup: req.body["aiub-whatsapp"] || "",
           culturalActivities: req.body["cultural-activities"] || "",
         },
         remarks: req.body.remarks || "",
+        career: includeInBrochure
+          ? {
+              includeInBrochure: "yes",
+              name: req.body["career-name"] || "",
+              email: req.body["career-email"] || "",
+              currentStatus: req.body["career-status"] || "",
+              companyOrInstitute: req.body["career-company-institute"] || "",
+              roleOrSubject: req.body["career-role-subject"] || "",
+            }
+          : null,
         uploads: {
           photo: photoUpload
             ? {

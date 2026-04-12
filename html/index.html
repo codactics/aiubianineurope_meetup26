@@ -269,14 +269,6 @@
               placeholder="Germany" required>
           </div>
 
-          <!-- Photo -->
-          <div>
-            <label class="block text-sm font-medium mb-1">Photo</label>
-            <input type="file" name="photo" accept=".png,.jpg,.jpeg"
-              class="w-full text-sm text-slate-200 file:mr-3 file:py-2 file:px-4 file:rounded-md file:border-0 file:bg-indigo-500 file:text-white hover:file:bg-indigo-400">
-            <p class="text-xs text-slate-400 mt-1">PNG or JPG only.</p>
-          </div>
-
           <!-- Professional status -->
           <div class="sm:col-span-2">
             <label class="block text-sm font-medium mb-1">Professional status</label>
@@ -528,7 +520,13 @@
               </div>
               <div class="rounded-xl border border-white/10 bg-slate-950/40 px-4 py-3">
                 <p class="text-xs uppercase tracking-[0.24em] text-slate-400">Reference</p>
-                <p class="mt-1 text-sm font-medium text-white">AIUBian In Meetup 2026</p>
+                <div class="mt-1 flex items-center justify-between gap-3">
+                  <p class="text-sm font-medium text-white">Payment for AIUBian In Europe Meetup 2026</p>
+                  <button type="button" data-copy-text="Payment for AIUBian In Europe Meetup 2026"
+                    class="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs font-medium text-indigo-100 transition hover:border-indigo-300/40 hover:text-white">
+                    Copy
+                  </button>
+                </div>
               </div>
             </div>
             <p class="mt-4 text-sm text-slate-300">
@@ -545,6 +543,75 @@
       </div>
 
       <div class="bg-slate-900/40 border border-slate-800 rounded-2xl p-6 sm:p-8 shadow-lg space-y-6">
+        <div class="rounded-2xl border border-sky-400/20 bg-sky-400/5 p-5">
+          <p class="text-sm uppercase tracking-[0.3em] text-sky-200 mb-2">T-Shirt</p>
+          <p class="text-sm leading-relaxed text-slate-300">
+            Please check the T-shirt measurement table below, then select your preferred size.
+          </p>
+          <div class="mt-4 overflow-x-auto rounded-2xl border border-white/10">
+            <table class="min-w-full border-collapse text-sm text-slate-100">
+              <thead class="bg-slate-900/80 text-xs uppercase tracking-[0.2em] text-sky-100">
+                <tr>
+                  <th class="border border-white/10 px-3 py-3 text-left">Size</th>
+                  <th class="border border-white/10 px-3 py-3 text-left">Chest Half (inch)</th>
+                  <th class="border border-white/10 px-3 py-3 text-left">Shoulder (inch)</th>
+                  <th class="border border-white/10 px-3 py-3 text-left">Sleeve Length (inch)</th>
+                  <th class="border border-white/10 px-3 py-3 text-left">Full Length (inch)</th>
+                </tr>
+              </thead>
+              <tbody class="bg-slate-950/30">
+                <tr class="odd:bg-white/[0.03]">
+                  <td class="border border-white/10 px-3 py-3 font-medium">S</td>
+                  <td class="border border-white/10 px-3 py-3">19</td>
+                  <td class="border border-white/10 px-3 py-3">16.75</td>
+                  <td class="border border-white/10 px-3 py-3">7.25</td>
+                  <td class="border border-white/10 px-3 py-3">27.5</td>
+                </tr>
+                <tr class="odd:bg-white/[0.03]">
+                  <td class="border border-white/10 px-3 py-3 font-medium">M</td>
+                  <td class="border border-white/10 px-3 py-3">19.75</td>
+                  <td class="border border-white/10 px-3 py-3">17.25</td>
+                  <td class="border border-white/10 px-3 py-3">7.5</td>
+                  <td class="border border-white/10 px-3 py-3">28.25</td>
+                </tr>
+                <tr class="odd:bg-white/[0.03]">
+                  <td class="border border-white/10 px-3 py-3 font-medium">L</td>
+                  <td class="border border-white/10 px-3 py-3">20.5</td>
+                  <td class="border border-white/10 px-3 py-3">18</td>
+                  <td class="border border-white/10 px-3 py-3">7.75</td>
+                  <td class="border border-white/10 px-3 py-3">29</td>
+                </tr>
+                <tr class="odd:bg-white/[0.03]">
+                  <td class="border border-white/10 px-3 py-3 font-medium">XL</td>
+                  <td class="border border-white/10 px-3 py-3">21.75</td>
+                  <td class="border border-white/10 px-3 py-3">18.5</td>
+                  <td class="border border-white/10 px-3 py-3">8</td>
+                  <td class="border border-white/10 px-3 py-3">30</td>
+                </tr>
+                <tr class="odd:bg-white/[0.03]">
+                  <td class="border border-white/10 px-3 py-3 font-medium">XXL</td>
+                  <td class="border border-white/10 px-3 py-3">22.75</td>
+                  <td class="border border-white/10 px-3 py-3">19</td>
+                  <td class="border border-white/10 px-3 py-3">8.5</td>
+                  <td class="border border-white/10 px-3 py-3">30.75</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="mt-4">
+            <label class="block text-sm font-medium mb-2" for="tshirt-size">Preferred T-shirt Size <span class="text-slate-400">(Optional)</span></label>
+            <select id="tshirt-size" name="tshirt-size"
+              class="w-full rounded-md bg-white/5 px-3 py-2 text-sm text-white border border-white/10 focus:border-indigo-500 outline-none">
+              <option value="" selected style="background-color: #cbd5e1; color: #0f172a;">Select your preferred size</option>
+              <option value="-" style="background-color: #e2e8f0; color: #0f172a;">-</option>
+              <option value="S" style="background-color: #e2e8f0; color: #0f172a;">S</option>
+              <option value="M" style="background-color: #e2e8f0; color: #0f172a;">M</option>
+              <option value="L" style="background-color: #e2e8f0; color: #0f172a;">L</option>
+              <option value="XL" style="background-color: #e2e8f0; color: #0f172a;">XL</option>
+              <option value="XXL" style="background-color: #e2e8f0; color: #0f172a;">XXL</option>
+            </select>
+          </div>
+        </div>
         <!-- Remarks -->
         <div>
           <p class="text-sm font-medium mb-2">
@@ -588,6 +655,108 @@
             placeholder="Inform us of any remarks regarding food or other special requests."></textarea>
           <p class="text-xs text-slate-400 mt-2">Limit your note to 5–10 lines for faster review.</p>
         </div>
+        <div class="rounded-2xl border border-indigo-400/20 bg-indigo-400/5 p-5">
+          <p class="text-sm uppercase tracking-[0.3em] text-indigo-200 mb-2">Career Section</p>
+          <p class="text-sm leading-relaxed text-slate-300">
+            We are working on an online brochure, where we will showcase your name, photo (optional), email, your current status
+            (student or full time job), and where. This will never be used for any commercial purpose. If you want, please select yes
+            and fill in the information below.
+          </p>
+          <div class="mt-5 grid gap-6 lg:grid-cols-[minmax(0,1.2fr)_minmax(280px,0.8fr)] lg:items-start">
+            <div>
+              <div>
+                <p class="text-sm font-medium mb-2">Would you like to be included in the brochure?</p>
+                <div class="flex gap-6">
+                  <label class="inline-flex items-center gap-2 text-sm">
+                    <input type="radio" name="career-consent" value="yes"
+                      class="h-4 w-4 text-indigo-500 border-slate-600 bg-slate-900">
+                    Yes
+                  </label>
+                  <label class="inline-flex items-center gap-2 text-sm">
+                    <input type="radio" name="career-consent" value="no" checked
+                      class="h-4 w-4 text-indigo-500 border-slate-600 bg-slate-900">
+                    No
+                  </label>
+                </div>
+              </div>
+              <div id="careerFields" class="hidden mt-5 grid grid-cols-1 sm:grid-cols-2 gap-6">
+                <div class="sm:col-span-2">
+                  <label class="block text-sm font-medium mb-1" for="careerPhoto">Photo</label>
+                  <input type="file" id="careerPhoto" name="photo" accept=".png,.jpg,.jpeg"
+                    class="w-full text-sm text-slate-200 file:mr-3 file:py-2 file:px-4 file:rounded-md file:border-0 file:bg-indigo-500 file:text-white hover:file:bg-indigo-400">
+                  <p class="text-xs text-slate-400 mt-1">PNG or JPG only.</p>
+                </div>
+                <div>
+                  <label class="block text-sm font-medium mb-1" for="careerName">Name</label>
+                  <input type="text" id="careerName" name="career-name"
+                    class="w-full rounded-md bg-white/5 px-3 py-2 text-sm text-white border border-white/10 focus:border-indigo-500 outline-none"
+                    placeholder="Your name for the brochure">
+                </div>
+                <div>
+                  <label class="block text-sm font-medium mb-1" for="careerEmail">Email</label>
+                  <input type="email" id="careerEmail" name="career-email"
+                    class="w-full rounded-md bg-white/5 px-3 py-2 text-sm text-white border border-white/10 focus:border-indigo-500 outline-none"
+                    placeholder="Your email for the brochure">
+                </div>
+                <div>
+                  <label class="block text-sm font-medium mb-1" for="careerStatus">Current Status</label>
+                  <select id="careerStatus" name="career-status"
+                    class="w-full rounded-md bg-slate-900/70 px-3 py-2 text-sm text-white border border-white/10 focus:border-indigo-500 outline-none">
+                    <option value="">Select status</option>
+                    <option value="student">Student</option>
+                    <option value="full-time-job">Full time job</option>
+                    <option value="other">Other</option>
+                  </select>
+                </div>
+                <div>
+                  <label class="block text-sm font-medium mb-1" for="careerInstitute">Company / Institute</label>
+                  <input type="text" id="careerInstitute" name="career-company-institute"
+                    class="w-full rounded-md bg-white/5 px-3 py-2 text-sm text-white border border-white/10 focus:border-indigo-500 outline-none"
+                    placeholder="Company or institute name">
+                </div>
+                <div class="sm:col-span-2">
+                  <label class="block text-sm font-medium mb-1" for="careerRole">Company role / Subject</label>
+                  <input type="text" id="careerRole" name="career-role-subject"
+                    class="w-full rounded-md bg-white/5 px-3 py-2 text-sm text-white border border-white/10 focus:border-indigo-500 outline-none"
+                    placeholder="Role, position, or subject">
+                </div>
+              </div>
+            </div>
+            <aside id="careerPreviewCard" class="hidden rounded-3xl border border-sky-300/20 bg-slate-950/80 p-5 shadow-lg shadow-slate-950/40">
+              <div class="bg-gradient-to-br from-slate-900 via-slate-950 to-slate-900 p-5">
+                <p class="text-xs uppercase tracking-[0.3em] text-slate-400">Brochure Card</p>
+                <div class="mt-4 flex items-start gap-4">
+                  <div class="flex h-20 w-20 shrink-0 items-center justify-center overflow-hidden rounded-2xl border border-white/10 bg-white/5">
+                    <img id="careerPreviewPhoto" src="" alt="Brochure preview photo" class="hidden h-full w-full object-cover">
+                    <div id="careerPreviewPhotoFallback" class="px-3 text-center text-[0.65rem] uppercase tracking-[0.24em] text-slate-500">Photo</div>
+                  </div>
+                </div>
+                <div class="mt-5 grid gap-4 sm:grid-cols-2">
+                  <div>
+                    <p class="text-[0.65rem] uppercase tracking-[0.24em] text-slate-500">Name</p>
+                    <p id="careerPreviewName" class="mt-1 text-sm font-medium text-white break-words">Your name</p>
+                  </div>
+                  <div>
+                    <p class="text-[0.65rem] uppercase tracking-[0.24em] text-slate-500">Current Status</p>
+                    <p id="careerPreviewStatus" class="mt-1 text-sm font-medium text-white break-words">Current status</p>
+                  </div>
+                  <div>
+                    <p class="text-[0.65rem] uppercase tracking-[0.24em] text-slate-500">Email</p>
+                    <p id="careerPreviewEmail" class="mt-1 text-sm font-medium text-white break-words">your.name (at) example.com</p>
+                  </div>
+                  <div>
+                    <p class="text-[0.65rem] uppercase tracking-[0.24em] text-slate-500">Company / Institute</p>
+                    <p id="careerPreviewInstitute" class="mt-1 text-sm font-medium text-white break-words">Company or institute</p>
+                  </div>
+                </div>
+                <div class="mt-4">
+                  <p class="text-[0.65rem] uppercase tracking-[0.24em] text-slate-500">Company role / Subject</p>
+                  <p id="careerPreviewRole" class="mt-1 text-sm font-medium text-white break-words">Role, position, or subject</p>
+                </div>
+              </div>
+            </aside>
+          </div>
+        </div>
 
         <!-- submit -->
         <div class="flex justify-end">
@@ -609,6 +778,10 @@
         <button data-privacy="de" class="text-indigo-300 underline hover:text-indigo-200 focus:outline-none">German</button> |
         <button data-privacy="en" class="text-indigo-300 underline hover:text-indigo-200 focus:outline-none">English</button>
       </p>
+      <div class="mt-6 text-center text-[0.65rem] text-slate-300">
+        <p class="uppercase tracking-[0.35em] text-[0.55rem] text-slate-400">Developed and maintained by</p>
+        <a href="https://www.codactics.com/" target="_blank" rel="noopener noreferrer" class="lot-font text-red-500 hover:text-red-400">CODACTICS</a>
+      </div>
     </div>
   </section>
 
@@ -687,11 +860,6 @@
 
   </div>
 
-  <div class="fixed bottom-4 right-4 text-center text-[0.65rem] text-slate-300">
-    <p class="uppercase tracking-[0.35em] text-[0.55rem] text-slate-400">Developed and maintained by</p>
-    <a href="https://www.codactics.com/" target="_blank" rel="noopener noreferrer" class="lot-font text-red-500 hover:text-red-400">CODACTICS</a>
-  </div>
-
   <script>
     /* -------- PHONE COUNTRY PICKER -------- */
     const countries = [
@@ -753,6 +921,7 @@
         nameEl.textContent = c.name;
         hiddenEl.value = c.code;
         listEl.classList.add("hidden");
+        updateCareerPreview();
       });
       listEl.appendChild(btn);
     });
@@ -982,14 +1151,34 @@
   const successModal = document.getElementById("successModal");
   const successClose = document.getElementById("successClose");
   const successDownload = document.getElementById("successDownload");
+  const careerFields = document.getElementById("careerFields");
+  const careerPreviewCard = document.getElementById("careerPreviewCard");
+  const careerPreviewPhoto = document.getElementById("careerPreviewPhoto");
+  const careerPreviewPhotoFallback = document.getElementById("careerPreviewPhotoFallback");
+  const careerPreviewName = document.getElementById("careerPreviewName");
+  const careerPreviewStatus = document.getElementById("careerPreviewStatus");
+  const careerPreviewEmail = document.getElementById("careerPreviewEmail");
+  const careerPreviewInstitute = document.getElementById("careerPreviewInstitute");
+  const careerPreviewRole = document.getElementById("careerPreviewRole");
 
   const getCheckedValue = (name) => document.querySelector(`input[name="${name}"]:checked`)?.value ?? "Not selected";
+  const getTshirtSizeValue = () => {
+    const value = eventForm?.elements["tshirt-size"]?.value?.trim() ?? "";
+    return !value || value === "-" ? "N/A" : value;
+  };
   const escapeHtml = (value) => String(value)
     .replaceAll("&", "&amp;")
     .replaceAll("<", "&lt;")
     .replaceAll(">", "&gt;");
 
   const formatChoice = (valueMap, value) => valueMap[value] ?? value ?? "Not provided";
+  const brochureStatusMap = { student: "Student", "full-time-job": "Full time job", other: "Other" };
+
+  const maskEmailForBrochure = (value) => {
+    const email = String(value || "").trim();
+    if (!email) return "your.name (at) example.com";
+    return email.replaceAll("@", " (at) ");
+  };
 
   const buildPreviewRow = (label, value) => `
     <div class="rounded-xl border border-white/10 bg-white/5 px-4 py-3">
@@ -1024,6 +1213,68 @@
     container.appendChild(wrapper);
   };
 
+  const updateCareerPreview = () => {
+    const isIncluded = getCheckedValue("career-consent") === "yes";
+    const photoFile = eventForm?.elements["photo"]?.files?.[0];
+
+    careerPreviewCard?.classList.toggle("opacity-70", !isIncluded);
+    if (careerPreviewName) careerPreviewName.textContent = eventForm?.elements["career-name"]?.value?.trim() || "Your name";
+    if (careerPreviewStatus) careerPreviewStatus.textContent = formatChoice(brochureStatusMap, eventForm?.elements["career-status"]?.value).replace("Not provided", "Current status");
+    if (careerPreviewEmail) careerPreviewEmail.textContent = maskEmailForBrochure(eventForm?.elements["career-email"]?.value);
+    if (careerPreviewInstitute) careerPreviewInstitute.textContent = eventForm?.elements["career-company-institute"]?.value?.trim() || "Company or institute";
+    if (careerPreviewRole) careerPreviewRole.textContent = eventForm?.elements["career-role-subject"]?.value?.trim() || "Role, position, or subject";
+
+    if (photoFile && photoFile.type.startsWith("image/")) {
+      const previewUrl = URL.createObjectURL(photoFile);
+      if (careerPreviewPhoto) {
+        if (careerPreviewPhoto.dataset.objectUrl) {
+          URL.revokeObjectURL(careerPreviewPhoto.dataset.objectUrl);
+        }
+        careerPreviewPhoto.src = previewUrl;
+        careerPreviewPhoto.dataset.objectUrl = previewUrl;
+        careerPreviewPhoto.classList.remove("hidden");
+      }
+      careerPreviewPhotoFallback?.classList.add("hidden");
+    } else {
+      if (careerPreviewPhoto?.dataset.objectUrl) {
+        URL.revokeObjectURL(careerPreviewPhoto.dataset.objectUrl);
+        delete careerPreviewPhoto.dataset.objectUrl;
+      }
+      if (careerPreviewPhoto) {
+        careerPreviewPhoto.src = "";
+        careerPreviewPhoto.classList.add("hidden");
+      }
+      careerPreviewPhotoFallback?.classList.remove("hidden");
+    }
+  };
+
+  const toggleCareerFields = () => {
+    const showCareerFields = getCheckedValue("career-consent") === "yes";
+    const careerInputNames = [
+      "career-name",
+      "career-email",
+      "career-status",
+      "career-company-institute",
+      "career-role-subject",
+    ];
+
+    careerFields?.classList.toggle("hidden", !showCareerFields);
+    careerPreviewCard?.classList.toggle("hidden", !showCareerFields);
+
+    careerInputNames.forEach((name) => {
+      const field = eventForm?.elements[name];
+      if (!(field instanceof HTMLElement)) return;
+      if ("required" in field) {
+        field.required = showCareerFields;
+      }
+      if (!showCareerFields && "value" in field) {
+        field.value = "";
+      }
+    });
+
+    updateCareerPreview();
+  };
+
   const renderPreview = () => {
     if (!previewBody) return;
 
@@ -1056,10 +1307,25 @@
       ["Kids Amount", kidsAmount?.textContent?.trim()],
       ["Payable Total", totalRegistrationAmount?.textContent?.trim()],
       ["Payment Method", formatChoice({ bank: "Bank", paypal: "PayPal" }, getCheckedValue("payment-method"))],
+      ["Preferred T-shirt Size", getTshirtSizeValue()],
       ["WhatsApp Group", formatChoice({ yes: "Yes", no: "No" }, getCheckedValue("aiub-whatsapp"))],
       ["Cultural Activities", formatChoice({ yes: "Yes", no: "No" }, getCheckedValue("cultural-activities"))],
       ["Remarks / Notes", eventForm?.elements["remarks"]?.value?.trim() || "No remarks provided"],
     ];
+
+    const careerIncluded = getCheckedValue("career-consent");
+    const careerRows = [];
+
+    if (careerIncluded === "yes") {
+      careerRows.push(
+        ["Include In Brochure", "Yes"],
+        ["Name", eventForm?.elements["career-name"]?.value?.trim() || "Not provided"],
+        ["Email", eventForm?.elements["career-email"]?.value?.trim() || "Not provided"],
+        ["Current Status", formatChoice({ student: "Student", "full-time-job": "Full time job", other: "Other" }, eventForm?.elements["career-status"]?.value)],
+        ["Current Company / Institute", eventForm?.elements["career-company-institute"]?.value?.trim() || "Not provided"],
+        ["Company role / Subject", eventForm?.elements["career-role-subject"]?.value?.trim() || "Not provided"],
+      );
+    }
 
     previewBody.innerHTML = `
       <section class="rounded-2xl border border-slate-800 bg-slate-900/50 p-5">
@@ -1082,6 +1348,14 @@
           ${attendanceRows.map(([label, value]) => buildPreviewRow(label, value)).join("")}
         </div>
       </section>
+      ${careerIncluded === "yes" ? `
+      <section class="rounded-2xl border border-slate-800 bg-slate-900/50 p-5">
+        <p class="text-xs uppercase tracking-[0.3em] text-indigo-200">Career Section</p>
+        <div class="mt-4 grid gap-3 sm:grid-cols-2">
+          ${careerRows.map(([label, value]) => buildPreviewRow(label, value)).join("")}
+        </div>
+      </section>
+      ` : ""}
     `;
 
     const filesSection = document.createElement("section");
@@ -1163,6 +1437,7 @@
     updateParticipantSummary();
     updateRegistrationAmount();
     updatePaymentDetails();
+    toggleCareerFields();
 
     if (previewBody) previewBody.innerHTML = "";
   };
@@ -1209,12 +1484,24 @@
       ["Kids Amount", kidsAmount?.textContent?.trim() || "0 Euro"],
       ["Payable Total", totalRegistrationAmount?.textContent?.trim() || "0 Euro"],
       ["Payment Method", formatChoice({ bank: "Bank", paypal: "PayPal" }, getCheckedValue("payment-method"))],
+      ["Preferred T-shirt Size", getTshirtSizeValue()],
       ["WhatsApp Group", formatChoice({ yes: "Yes", no: "No" }, getCheckedValue("aiub-whatsapp"))],
       ["Cultural Activities", formatChoice({ yes: "Yes", no: "No" }, getCheckedValue("cultural-activities"))],
       ["Remarks / Notes", eventForm.elements["remarks"]?.value?.trim() || "No remarks provided"],
       ["Photo Upload", photoFile],
       ["Payment Proof Upload", proofFile],
     ];
+
+    if (getCheckedValue("career-consent") === "yes") {
+      rows.push(
+        ["Include In Brochure", "Yes"],
+        ["Career Name", eventForm.elements["career-name"]?.value?.trim() || "Not provided"],
+        ["Career Email", eventForm.elements["career-email"]?.value?.trim() || "Not provided"],
+        ["Career Status", formatChoice({ student: "Student", "full-time-job": "Full time job", other: "Other" }, eventForm.elements["career-status"]?.value)],
+        ["Current Company / Institute", eventForm.elements["career-company-institute"]?.value?.trim() || "Not provided"],
+        ["Company role / Subject", eventForm.elements["career-role-subject"]?.value?.trim() || "Not provided"],
+      );
+    }
 
     const ensureSpace = (neededHeight = 10) => {
       if (y + neededHeight <= pageHeight - margin) return;
@@ -1319,6 +1606,22 @@
     if (!(input instanceof HTMLInputElement)) return;
     input.value = input.value.replace(/\D/g, "");
   });
+  document.querySelectorAll('input[name="career-consent"]').forEach((input) => {
+    input.addEventListener("change", toggleCareerFields);
+  });
+  [
+    "career-name",
+    "career-email",
+    "career-status",
+    "career-company-institute",
+    "career-role-subject",
+    "photo",
+  ].forEach((name) => {
+    eventForm?.elements[name]?.addEventListener("input", updateCareerPreview);
+    eventForm?.elements[name]?.addEventListener("change", updateCareerPreview);
+  });
+  toggleCareerFields();
+  updateCareerPreview();
   previewSubmit?.addEventListener("click", async () => {
     const submitted = await submitRegistration();
     if (!submitted) return;
