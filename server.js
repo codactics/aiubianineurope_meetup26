@@ -73,17 +73,22 @@ const parseInteger = (value, fallback = 0) => {
 
 const computeAmounts = ({ professionalStatus, coming, kids8To16 }) => {
   let baseAmount = 40;
+  let spouseAmount = 0;
 
   if (professionalStatus === "fulltime") {
-    baseAmount = coming === "with-spouse" ? 100 : 60;
+    baseAmount = 65;
   } else if (professionalStatus === "student" || professionalStatus === "other") {
-    baseAmount = coming === "with-spouse" ? 80 : 40;
+    baseAmount = 40;
   }
 
-  const kidsAmount = kids8To16 * 20;
-  const totalAmount = baseAmount + kidsAmount;
+  if (coming === "with-spouse") {
+    spouseAmount = 40;
+  }
 
-  return { baseAmount, kidsAmount, totalAmount };
+  const kidsAmount = kids8To16 * 15;
+  const totalAmount = baseAmount + spouseAmount + kidsAmount;
+
+  return { baseAmount, spouseAmount, kidsAmount, totalAmount };
 };
 
 app.use("/logo", express.static(path.join(__dirname, "logo")));
@@ -95,13 +100,11 @@ app.get("/", (_req, res) => {
 app.post(
   "/api/registrations",
   upload.fields([
-    { name: "photo", maxCount: 1 },
     { name: "payment-proof", maxCount: 1 },
   ]),
   async (req, res) => {
     try {
       const files = req.files || {};
-      const photoFile = files.photo?.[0] || null;
       const paymentProofFile = files["payment-proof"]?.[0] || null;
 
       const kids0To7 = parseInteger(req.body["kids-0-7"]);
@@ -110,16 +113,15 @@ app.post(
       const coming = req.body.coming || "alone";
       const amounts = computeAmounts({ professionalStatus, coming, kids8To16 });
 
-      const [photoUpload, paymentProofUpload] = await Promise.all([
-        uploadToCloudinary(photoFile, "aiubian-in-europe/meetup26/photos", "image"),
-        uploadToCloudinary(paymentProofFile, "aiubian-in-europe/meetup26/payment-proofs", "auto"),
-      ]);
-
-      const includeInBrochure = (req.body["career-consent"] || "no") === "yes";
+      const paymentProofUpload = await uploadToCloudinary(
+        paymentProofFile,
+        "aiubian-in-europe/meetup26/payment-proofs",
+        "auto"
+      );
 
       const document = {
         event: {
-          title: "AIUBian In Europe MeetUp 26",
+          title: "AIUBian In Europe - Meet-Up 26, Registration Form",
           date: "2026-08-29",
           location: "SAALBAU Gallus, Frankenallee 111, 60326 Frankfurt am Main",
         },
@@ -163,26 +165,6 @@ app.post(
           culturalActivities: req.body["cultural-activities"] || "",
         },
         remarks: req.body.remarks || "",
-        career: includeInBrochure
-          ? {
-              includeInBrochure: "yes",
-              name: req.body["career-name"] || "",
-              email: req.body["career-email"] || "",
-              currentStatus: req.body["career-status"] || "",
-              companyOrInstitute: req.body["career-company-institute"] || "",
-              roleOrSubject: req.body["career-role-subject"] || "",
-            }
-          : null,
-        uploads: {
-          photo: photoUpload
-            ? {
-                originalName: photoFile?.originalname || "",
-                url: photoUpload.secure_url,
-                publicId: photoUpload.public_id,
-                resourceType: photoUpload.resource_type,
-              }
-            : null,
-        },
         createdAt: new Date(),
       };
 
@@ -194,7 +176,6 @@ app.post(
         id: result.insertedId,
         pricing: amounts,
         uploads: {
-          photo: document.uploads.photo,
           paymentProof: document.payment.proof,
         },
       });
