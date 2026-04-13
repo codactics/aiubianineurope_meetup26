@@ -86,6 +86,30 @@ const parseInteger = (value, fallback = 0) => {
   return Number.isNaN(parsed) ? fallback : parsed;
 };
 
+const getPublicErrorMessage = (error, fallbackMessage) => {
+  if (!error) return fallbackMessage;
+
+  if (error.statusCode === 400 && error.message) {
+    return error.message;
+  }
+
+  if (typeof error.http_code === "number" && error.message) {
+    return `Upload failed: ${error.message}`;
+  }
+
+  if (typeof error.message === "string") {
+    if (/cloudinary/i.test(error.message)) {
+      return `Upload failed: ${error.message}`;
+    }
+
+    if (/unsupported|invalid|file size|too large|pdf|jpeg|jpg|png/i.test(error.message)) {
+      return error.message;
+    }
+  }
+
+  return fallbackMessage;
+};
+
 const computeAmounts = ({ professionalStatus, coming, kids8To16 }) => {
   let baseAmount = 40;
   let spouseAmount = 0;
@@ -213,7 +237,7 @@ app.post(
       console.error("Registration submission failed:", error);
       res.status(error.statusCode || 500).json({
         ok: false,
-        error: error.statusCode === 400 ? error.message : "Failed to store registration",
+        error: getPublicErrorMessage(error, "Failed to store registration"),
       });
     }
   }
@@ -236,7 +260,7 @@ app.use((error, _req, res, _next) => {
   console.error("Unhandled request failure:", error);
   res.status(error.statusCode || 500).json({
     ok: false,
-    error: error.statusCode ? error.message : "Unexpected server error",
+    error: getPublicErrorMessage(error, "Unexpected server error"),
   });
 });
 
