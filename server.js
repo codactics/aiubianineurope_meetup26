@@ -9,6 +9,11 @@ dotenv.config({ path: path.join(__dirname, "html", ".env.local") });
 
 const app = express();
 const upload = multer({ storage: multer.memoryStorage(), limits: { fileSize: 15 * 1024 * 1024 } });
+const allowedUploadMimeTypes = new Set([
+  "image/jpeg",
+  "image/png",
+  "application/pdf",
+]);
 
 const port = Number(process.env.PORT || 3000);
 const mongoUri = process.env.MONGODB_URI;
@@ -66,6 +71,16 @@ const uploadToCloudinary = (file, folder, resourceType = "auto") =>
     stream.end(file.buffer);
   });
 
+const validateUpload = (file, label) => {
+  if (!file) return;
+
+  if (!allowedUploadMimeTypes.has(file.mimetype)) {
+    const error = new Error(`${label} must be a PDF, JPG, JPEG, or PNG file.`);
+    error.statusCode = 400;
+    throw error;
+  }
+};
+
 const parseInteger = (value, fallback = 0) => {
   const parsed = Number.parseInt(String(value ?? ""), 10);
   return Number.isNaN(parsed) ? fallback : parsed;
@@ -108,6 +123,9 @@ app.post(
       const files = req.files || {};
       const photoFile = files.photo?.[0] || null;
       const paymentProofFile = files["payment-proof"]?.[0] || null;
+
+      validateUpload(photoFile, "Photo");
+      validateUpload(paymentProofFile, "Payment proof");
 
       const kids0To7 = parseInteger(req.body["kids-0-7"]);
       const kids8To16 = parseInteger(req.body["kids-8-16"]);
@@ -193,13 +211,34 @@ app.post(
       });
     } catch (error) {
       console.error("Registration submission failed:", error);
-      res.status(500).json({
+      res.status(error.statusCode || 500).json({
         ok: false,
-        error: "Failed to store registration",
+        error: error.statusCode === 400 ? error.message : "Failed to store registration",
       });
     }
   }
 );
+
+app.use((error, _req, res, _next) => {
+  if (error instanceof multer.MulterError) {
+    const message =
+      error.code === "LIMIT_FILE_SIZE"
+        ? "Each uploaded file must be 15 MB or smaller."
+        : error.message;
+
+    res.status(400).json({
+      ok: false,
+      error: message,
+    });
+    return;
+  }
+
+  console.error("Unhandled request failure:", error);
+  res.status(error.statusCode || 500).json({
+    ok: false,
+    error: error.statusCode ? error.message : "Unexpected server error",
+  });
+});
 
 app.listen(port, () => {
   console.log(`Server running at http://localhost:${port}`);

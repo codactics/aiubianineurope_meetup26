@@ -1185,6 +1185,19 @@
     successModal?.classList.add("hidden");
   };
 
+  const getRegistrationApiUrl = () => {
+    const configuredBaseUrl = document
+      .querySelector('meta[name="registration-api-base-url"]')
+      ?.getAttribute("content")
+      ?.trim();
+
+    if (configuredBaseUrl) {
+      return `${configuredBaseUrl.replace(/\/+$/, "")}/api/registrations`;
+    }
+
+    return "/api/registrations";
+  };
+
   const submitRegistration = async () => {
     if (!eventForm) return false;
 
@@ -1194,7 +1207,7 @@
       previewSubmit?.setAttribute("disabled", "disabled");
       if (previewSubmit) previewSubmit.textContent = "Submitting...";
 
-      const response = await fetch("/api/registrations", {
+      const response = await fetch(getRegistrationApiUrl(), {
         method: "POST",
         body: formData,
       });
@@ -1207,9 +1220,20 @@
       return true;
     } catch (error) {
       const isFilePage = window.location.protocol === "file:";
-      const message = isFilePage
-        ? "Failed to submit registration. Open this form through the local server at http://localhost:3000, not as a file."
-        : "Failed to submit registration. Make sure the backend server is running with npm start and open the form from http://localhost:3000.";
+      const isLocalHost =
+        window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1";
+      const defaultMessage = isFilePage
+        ? "Failed to submit registration. Open this form through a web server, not directly as a file."
+        : isLocalHost
+          ? "Failed to submit registration. Make sure the backend server is running with npm start and open the form from http://localhost:3000."
+          : "Failed to submit registration because the registration service is unavailable on this site right now.";
+      const message =
+        error instanceof Error &&
+        error.message &&
+        error.message !== "Failed to fetch" &&
+        error.message !== "NetworkError when attempting to fetch resource."
+          ? error.message
+          : defaultMessage;
       window.alert(message);
       return false;
     } finally {
