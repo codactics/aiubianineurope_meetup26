@@ -100,11 +100,13 @@ app.get("/", (_req, res) => {
 app.post(
   "/api/registrations",
   upload.fields([
+    { name: "photo", maxCount: 1 },
     { name: "payment-proof", maxCount: 1 },
   ]),
   async (req, res) => {
     try {
       const files = req.files || {};
+      const photoFile = files.photo?.[0] || null;
       const paymentProofFile = files["payment-proof"]?.[0] || null;
 
       const kids0To7 = parseInteger(req.body["kids-0-7"]);
@@ -113,11 +115,10 @@ app.post(
       const coming = req.body.coming || "alone";
       const amounts = computeAmounts({ professionalStatus, coming, kids8To16 });
 
-      const paymentProofUpload = await uploadToCloudinary(
-        paymentProofFile,
-        "aiubian-in-europe/meetup26/payment-proofs",
-        "auto"
-      );
+      const [photoUpload, paymentProofUpload] = await Promise.all([
+        uploadToCloudinary(photoFile, "aiubian-in-europe/meetup26/photos", "image"),
+        uploadToCloudinary(paymentProofFile, "aiubian-in-europe/meetup26/payment-proofs", "auto"),
+      ]);
 
       const document = {
         event: {
@@ -165,6 +166,16 @@ app.post(
           culturalActivities: req.body["cultural-activities"] || "",
         },
         remarks: req.body.remarks || "",
+        uploads: {
+          photo: photoUpload
+            ? {
+                originalName: photoFile?.originalname || "",
+                url: photoUpload.secure_url,
+                publicId: photoUpload.public_id,
+                resourceType: photoUpload.resource_type,
+              }
+            : null,
+        },
         createdAt: new Date(),
       };
 
@@ -176,6 +187,7 @@ app.post(
         id: result.insertedId,
         pricing: amounts,
         uploads: {
+          photo: document.uploads.photo,
           paymentProof: document.payment.proof,
         },
       });

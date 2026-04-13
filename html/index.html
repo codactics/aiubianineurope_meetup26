@@ -167,6 +167,13 @@
               required>
           </div>
 
+          <div class="sm:col-span-2 rounded-2xl border border-dashed border-sky-500/50 bg-slate-900/40 px-4 py-4 text-left">
+            <label class="block text-sm font-medium text-white mb-1">Upload photo <span class="text-slate-400">(Optional)</span></label>
+            <p class="text-xs text-slate-400 mb-2">JPEG, JPG, PNG only</p>
+            <input type="file" name="photo" accept=".jpeg,.jpg,.png"
+              class="w-full text-sm text-slate-200 file:mr-3 file:py-2 file:px-4 file:rounded-full file:border-0 file:bg-sky-500 file:text-white hover:file:bg-sky-400">
+          </div>
+
           <!-- PHONE -->
           <div class="sm:col-span-2">
             <label class="block text-sm font-medium mb-1">Phone</label>
@@ -1102,6 +1109,7 @@
 
     const phoneCode = hiddenEl?.value ?? "";
     const phoneNumber = eventForm?.elements["phone-number"]?.value?.trim() ?? "";
+    const photoFile = eventForm?.elements["photo"]?.files?.[0];
     const proofFile = eventForm?.elements["payment-proof"]?.files?.[0];
 
     const personalRows = [
@@ -1163,6 +1171,7 @@
 
     const filesGrid = document.createElement("div");
     filesGrid.className = "mt-4 grid gap-3 sm:grid-cols-2";
+    appendFilePreview(filesGrid, "Photo", photoFile);
     appendFilePreview(filesGrid, "Payment Proof", proofFile);
     filesSection.appendChild(filesGrid);
     previewBody.appendChild(filesSection);
@@ -1252,7 +1261,9 @@
 
     const phoneCode = hiddenEl?.value ?? "";
     const phoneNumber = eventForm.elements["phone-number"]?.value?.trim() ?? "";
+    const photoUpload = eventForm.elements["photo"]?.files?.[0];
     const proofUpload = eventForm.elements["payment-proof"]?.files?.[0];
+    const photoFile = photoUpload?.name || "No file uploaded";
     const proofFile = proofUpload?.name || "No file uploaded";
 
     const rows = [
@@ -1283,6 +1294,7 @@
       ["WhatsApp Group", formatChoice({ yes: "Yes", no: "No" }, getCheckedValue("aiub-whatsapp"))],
       ["Cultural Activities", formatChoice({ yes: "Yes", no: "No" }, getCheckedValue("cultural-activities"))],
       ["Remarks / Notes", eventForm.elements["remarks"]?.value?.trim() || "No remarks provided"],
+      ["Photo Upload", photoFile],
       ["Payment Proof Upload", proofFile],
     ];
 
@@ -1350,6 +1362,7 @@
     });
 
     const imageUploads = [
+      ["Photo Upload Preview", photoUpload],
       ["Payment Proof Preview", proofUpload],
     ];
 
