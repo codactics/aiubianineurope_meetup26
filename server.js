@@ -5,10 +5,12 @@ const dotenv = require("dotenv");
 const { MongoClient } = require("mongodb");
 const { v2: cloudinary } = require("cloudinary");
 
-dotenv.config({ path: path.join(__dirname, "html", ".env.local") });
+dotenv.config({ path: path.join(__dirname, ".env.local") });
+dotenv.config({ path: path.join(__dirname, "html", ".env.local"), override: false });
 
 const app = express();
-const upload = multer({ storage: multer.memoryStorage(), limits: { fileSize: 15 * 1024 * 1024 } });
+const maxHostedUploadBytes = 4 * 1024 * 1024;
+const upload = multer({ storage: multer.memoryStorage(), limits: { fileSize: maxHostedUploadBytes } });
 const allowedUploadMimeTypes = new Set([
   "image/jpeg",
   "image/png",
@@ -19,22 +21,48 @@ const port = Number(process.env.PORT || 3000);
 const mongoUri = process.env.MONGODB_URI;
 const dbName = process.env.MONGODB_DB_NAME || "aiubian_in_europe";
 const collectionName = "meetup26";
-
-if (!mongoUri) {
-  throw new Error("Missing MONGODB_URI in html/.env.local");
-}
+const cloudinaryCloudName = process.env.CLOUDINARY_CLOUD_NAME;
+const cloudinaryApiKey = process.env.CLOUDINARY_API_KEY;
+const cloudinaryApiSecret = process.env.CLOUDINARY_API_SECRET;
 
 cloudinary.config({
-  cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
-  api_key: process.env.CLOUDINARY_API_KEY,
-  api_secret: process.env.CLOUDINARY_API_SECRET,
+  cloud_name: cloudinaryCloudName,
+  api_key: cloudinaryApiKey,
+  api_secret: cloudinaryApiSecret,
 });
 
-const mongoClient = new MongoClient(mongoUri);
+const mongoClient = mongoUri ? new MongoClient(mongoUri) : null;
 let collectionPromise;
+let startupValidationError = null;
+
+const requiredEnvVars = [
+  ["MONGODB_URI", mongoUri],
+  ["CLOUDINARY_CLOUD_NAME", cloudinaryCloudName],
+  ["CLOUDINARY_API_KEY", cloudinaryApiKey],
+  ["CLOUDINARY_API_SECRET", cloudinaryApiSecret],
+];
+
+const missingEnvVars = requiredEnvVars
+  .filter(([, value]) => !String(value ?? "").trim())
+  .map(([name]) => name);
+
+if (missingEnvVars.length > 0) {
+  startupValidationError = new Error(
+    `Missing required environment variables: ${missingEnvVars.join(", ")}`
+  );
+  startupValidationError.statusCode = 500;
+}
 
 const getCollection = async () => {
+  if (startupValidationError) {
+    throw startupValidationError;
+  }
+
   if (!collectionPromise) {
+    if (!mongoClient) {
+      throw startupValidationError || new Error("MongoDB client is not configured.");
+    }
+
     collectionPromise = mongoClient.connect().then((client) => client.db(dbName).collection(collectionName));
   }
   return collectionPromise;
@@ -49,6 +77,11 @@ const uploadToCloudinary = (file, folder, resourceType = "auto") =>
   new Promise((resolve, reject) => {
     if (!file) {
       resolve(null);
+      return;
+    }
+
+    if (startupValidationError) {
+      reject(startupValidationError);
       return;
     }
 
@@ -76,6 +109,18 @@ const validateUpload = (file, label) => {
 
   if (!allowedUploadMimeTypes.has(file.mimetype)) {
     const error = new Error(`${label} must be a PDF, JPG, JPEG, or PNG file.`);
+    error.statusCode = 400;
+    throw error;
+  }
+};
+
+const validateCombinedUploadSize = (files) => {
+  const totalBytes = files.reduce((sum, file) => sum + (file?.size || 0), 0);
+
+  if (totalBytes > maxHostedUploadBytes) {
+    const error = new Error(
+      "The total size of the photo and payment proof must stay under 4 MB on the hosted site."
+    );
     error.statusCode = 400;
     throw error;
   }
@@ -150,6 +195,7 @@ app.post(
 
       validateUpload(photoFile, "Photo");
       validateUpload(paymentProofFile, "Payment proof");
+      validateCombinedUploadSize([photoFile, paymentProofFile].filter(Boolean));
 
       const kids0To7 = parseInteger(req.body["kids-0-7"]);
       const kids8To16 = parseInteger(req.body["kids-8-16"]);
@@ -247,7 +293,7 @@ app.use((error, _req, res, _next) => {
   if (error instanceof multer.MulterError) {
     const message =
       error.code === "LIMIT_FILE_SIZE"
-        ? "Each uploaded file must be 15 MB or smaller."
+        ? "Each uploaded file must be 4 MB or smaller on the hosted site."
         : error.message;
 
     res.status(400).json({
@@ -264,6 +310,14 @@ app.use((error, _req, res, _next) => {
   });
 });
 
-app.listen(port, () => {
-  console.log(`Server running at http://localhost:${port}`);
-});
+if (startupValidationError) {
+  console.error(startupValidationError.message);
+}
+
+if (process.env.VERCEL !== "1") {
+  app.listen(port, () => {
+    console.log(`Server running at http://localhost:${port}`);
+  });
+}
+
+module.exports = app;

@@ -1185,6 +1185,32 @@
     successModal?.classList.add("hidden");
   };
 
+  const MAX_HOSTED_UPLOAD_BYTES = 4 * 1024 * 1024;
+
+  const validateHostedUploadSizes = () => {
+    if (!eventForm) return null;
+
+    const photoFile = eventForm.elements["photo"]?.files?.[0] ?? null;
+    const proofFile = eventForm.elements["payment-proof"]?.files?.[0] ?? null;
+    const files = [
+      ["Photo", photoFile],
+      ["Payment proof", proofFile],
+    ];
+
+    for (const [label, file] of files) {
+      if (file && file.size > MAX_HOSTED_UPLOAD_BYTES) {
+        return `${label} must be 4 MB or smaller on the hosted site.`;
+      }
+    }
+
+    const totalBytes = files.reduce((sum, [, file]) => sum + (file?.size || 0), 0);
+    if (totalBytes > MAX_HOSTED_UPLOAD_BYTES) {
+      return "The total size of the photo and payment proof must stay under 4 MB on the hosted site.";
+    }
+
+    return null;
+  };
+
   const getRegistrationApiUrl = () => {
     const configuredBaseUrl = document
       .querySelector('meta[name="registration-api-base-url"]')
@@ -1200,6 +1226,12 @@
 
   const submitRegistration = async () => {
     if (!eventForm) return false;
+
+    const uploadSizeError = validateHostedUploadSizes();
+    if (uploadSizeError) {
+      window.alert(uploadSizeError);
+      return false;
+    }
 
     const formData = new FormData(eventForm);
 
